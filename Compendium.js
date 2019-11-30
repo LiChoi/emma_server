@@ -1,12 +1,54 @@
 /***************************************************************CYP3A4 tags**********************************************************************************/ 
-const CYP3A4_metabolized = ['Atorvastatin', 'Lovastatin', 'Simvastatin'];
-const CYP3A4_inhibitors = ['Amiodarone', 'Clarithroymycin', 'Cyclosporine', 'Erythromycin', 'Grapefruit juice', 'Itraconazole', 'Ketoconazole', 'Protease inhibitors', 'Letermorvir', 'Nefazodone'];
+const CYP3A4_metabolized = ['Atorvastatin', 'chemicalName', 'Lovastatin', 'Simvastatin'];
+const CYP3A4_inhibitors = [
+  {
+    tag: 'Amiodarone', 
+    tagType: 'chemicalName'
+  }, 
+  {
+    tag: 'Clarithroymycin', 
+    tagType: 'chemicalName'
+  }, 
+  {
+    tag:'Cyclosporine',
+    tagType: 'chemicalName'
+  },
+  {
+    tag: 'Erythromycin',
+    tagType: 'chemicalName'
+  },
+  {
+    tag: 'Grapefruit juice',
+    tagType: 'food'
+  },
+  {
+    tag: 'Itraconazole',
+    tagType: 'chemicalName'
+  },
+  {
+    tag: 'Ketoconazole',
+    tagType: 'chemicalName'
+  },
+  {
+    tag: 'Protease inhibitors',
+    tagType: 'class'
+  },
+  {
+    tag: 'Letermorvir',
+    tagType: 'chemicalName',
+  },
+  {
+    tag: 'Nefazodone',
+    tagType: 'chemicalName'
+  }
+];
 
 
 /**************************************************************Statin commonalities*************************************************************************/
 const StatinIndications = ['Hyperlipidemia', 'High cholesterol', 'Cholesterol']; 
 const StatinCrossAllergies = ['Statin'];
-const StatinContraindications = ['Active liver disease', 'Pregnancy', 'High alcohol intake'];
+const StatinContraindications = ['Active liver disease', 'Pregnant', 'High alcohol intake'];
+const StatinInteractions = [{tag: 'Statin', tagType: 'class', effect: 'Potential duplicate therapy.', severity: '3'}];
 /* 
 CYP3A4 statins only...
 Cytochrome P-450-mediated Interactions: Atorvastatin is metabolized by the cytochrome
@@ -17,29 +59,17 @@ itraconazole, ketoconazole), transporter inhibitors, HIV/HCV protease inhibitors
 the antidepressant, nefazodone. Concomitant administration can lead to increased plasma
 concentrations of atorvastatin 
 */
-let CYP3A4_statin_interactions = [{tag: 'Gemfibrozil', effect: 'Increased toxicity. Breakdown of muscle tissue.', severity: '2' },{tag: 'Verapamil', effect: 'Increased toxicity. Breakdown of muscle tissue.', severity: '2' }];
+let CYP3A4_statin_interactions = [{tag: 'Gemfibrozil', tagType: 'chemicalName', effect: 'Increased toxicity. Breakdown of muscle tissue.', severity: '3' },{tag: 'Verapamil', tagType: 'chemicalName', effect: 'Increased toxicity. Breakdown of muscle tissue.', severity: '3' }];
 CYP3A4_statin_interactions = CYP3A4_statin_interactions.concat(
   CYP3A4_inhibitors.map((inhibitor)=>{
-    return {tag: inhibitor, effect: 'Concomitant administration can lead to increased plasma concentrations of the statin', severity: '2'}; 
+    return {tag: inhibitor.tag, tagType: inhibitor.tagType, effect: 'Concomitant administration can lead to increased plasma concentrations of the statin', severity: '3'}; 
   })
 ); 
-console.log(CYP3A4_statin_interactions); 
+//console.log(CYP3A4_statin_interactions); 
 
 
 /******************************************************The Compendium of Pharmaceuticals To Be Exported To Emma*************************************************************************/
 const Compendium = {
-  foo: {
-    chemicalName: 'foo',
-    tradeNames: ['sanis-foo','teva-foo','jamp-foo','apo-foo', 'novo-foo', 'pms-foo', 'ratio-foo'],
-    strengths: [0.1, 0.2, 0.5],
-    unit: 'G',
-    class: 'a',
-    indications: ["sleeping"],
-    interactionTags: [],
-    crossAllergies: ['foosh', 'foog', 'fooh'],
-    contraindications: ['1', '2', '3', '4'],
-    doseRange: "5-10"
-  },
   atorvastatin: {
     chemicalName: 'Atorvastatin',
     tradeNames: ['Lipitor', 'Atorvastatin', 'Apo-atorvastatin', 'Auro-atorvastatin', 'Jamp-atorvastatin', 'Mar-atorvastatin', 'Mylan-atorvastatin', 'Pms-atorvastatin', 'Ran-atorvastatin', 'Ratio-atorvastatin', 'Reddy-atorvastatin', 'Sandoz-atorvatatin', 'Teva-atorvastatin'],
@@ -47,10 +77,10 @@ const Compendium = {
     unit: 'Mg',
     class: 'Statin',
     indications: [...StatinIndications],
-    interactionTags: [...CYP3A4_statin_interactions], 
+    interactionTags: [...CYP3A4_statin_interactions].concat(StatinInteractions), 
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
-    doseRange: '10-80'
+    doseRange: [10,80]
   },
   lovastatin: {
     chemicalName: 'Lovastatin',
@@ -59,10 +89,10 @@ const Compendium = {
     unit: 'Mg',
     class: 'Statin',
     indications: [...StatinIndications],
-    interactionTags: [...CYP3A4_statin_interactions],
+    interactionTags: [...CYP3A4_statin_interactions].concat(StatinInteractions),
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
-    doseRange: '20-80'
+    doseRange: [20,80]
   },
   simvastatin: {
     chemicalName: 'Simvastatin',
@@ -71,13 +101,25 @@ const Compendium = {
     unit: 'Mg',
     class: 'Statin',
     indications: [...StatinIndications],
-    interactionTags: [...CYP3A4_statin_interactions], 
+    interactionTags: [...CYP3A4_statin_interactions].concat(StatinInteractions), 
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
-    doseRange: '20-80'
+    doseRange: [20,80]
   },
+  rosuvastatin: {
+    chemicalName: 'Rosuvastatin',
+    tradeNames: ['Crestor', 'Rosuvastatin', 'Ach-rosuvastatin', 'Apo-rosuvastatin', 'Auro-rosuvastatin', 'Co-rosuvastatin', 'Jamp-rosuvastatin', 'Mar-rosuvastatin', 'Med-rosuvastatin', 'Mint-rosuvastatin', 'Pms-rosuvastastin', 'Ran-rosuvastatin', 'Sandoz-rosuvastatin', 'Teva-rosuvastatin'],
+    strengths: [5, 10, 20, 40],
+    unit: 'Mg',
+    class: 'Statin',
+    indications: [...StatinIndications],
+    interactionTags: StatinInteractions,
+    crossAllergies: [...StatinCrossAllergies],
+    contraindications: [...StatinContraindications],
+    doseRange: [5,40]
+  }
 }; 
 
 module.exports = {
-  Compendium
+  Compendium 
 };
