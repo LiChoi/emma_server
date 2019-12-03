@@ -1,9 +1,12 @@
 //Array of terms that are actually listed in compendium contraindications
-const PrimaryTerms = ['Active liver disease', 'Pregnant', 'High alcohol intake'];
+const PrimaryTerms = ['Active liver disease', 'Pregnant', 'High alcohol intake', 'age>35', 'Smoking'];
 
 //The final list of conditions
 const Conditions = {
   pregnant: {primaryTerm: 'Pregnant', relatedTerms: ['Pregnant', 'Pregnancy']},
+  
+  //For age terms, all relatedTerms must be primaryTerms. Must use javascript operators as age will be substituted with user's age and eval() will be called
+  age: {primaryTerm: 'age', relatedTerms: ['age>35']},
   
   //Lifestyle terms
   smoking: {primaryTerm: 'Smoking', relatedTerms: ['Smoking', 'Smokes', 'Smoker']},
