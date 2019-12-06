@@ -6,7 +6,7 @@ const Conditions = {
   pregnant: {primaryTerm: 'Pregnant', relatedTerms: ['Pregnant', 'Pregnancy']},
   
   //For age terms, all relatedTerms must be primaryTerms. Must use javascript operators as age will be substituted with user's age and eval() will be called
-  age: {primaryTerm: 'age', relatedTerms: ['age>35']},
+  age: {primaryTerm: 'age', relatedTerms: ['age>35', 'age<18']},
   
   //Lifestyle terms
   smoking: {primaryTerm: 'Smoking', relatedTerms: ['Smoking', 'Smokes', 'Smoker']},
@@ -15,7 +15,7 @@ const Conditions = {
   
   //Cardiovascular terms
   hypertension: {primaryTerm: 'Hypertension', relatedTerms: ["Hypertension", "High blood pressure"]},
-  hyperlipidemia: {primaryTerm: 'Hyperlipidemia', relatedTerms: ["Hyperlipidemia", "Hypercholesterolemia", "Lipid disorder", "High blood cholesterol", "High cholesterol"]},
+  hyperlipidemia: {primaryTerm: 'Hyperlipidemia', relatedTerms: ["Hyperlipidemia", "Hypercholesterolemia", "Lipid disorder", "High blood cholesterol", "High cholesterol", "Cholesterol"]},
   familialHypercholesterolemia: {primaryTerm: 'Familial hypercholesterolemia', relatedTerms: ["Familial hypercholesterolemia"]},
   atrialFibrillation: {primaryTerm: 'Atrial fibrillation', relatedTerms: ["Atrial fibrillation", "A-fib", "AF"]},
   ventricularTachycardia: {primaryTerm: 'Ventricular tachycardia', relatedTerms: ["Ventricular tachycardia", "VT"]},
