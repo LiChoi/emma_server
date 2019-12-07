@@ -77,7 +77,7 @@ CYP3A4_statin_interactions = CYP3A4_statin_interactions.concat(
 /************************************************************Fibrate commonalities***************************************************************************************/
 const FibrateCIs = [
   {
-    tag: 'crcl<20ml/min', 
+    tag: 'crcl<20', //All creatinine clearance values must be in ml/min
     details: 'Significantly increased levels of drug.'
   }, 
   {
