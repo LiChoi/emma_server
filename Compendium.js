@@ -216,6 +216,40 @@ over 35 years of age. Women who use birth control pills
 should not smoke. 
 */
 
+/*****************************************************************************Antibiotics*************************************************************************/
+const AllAntibioticInteractions = [
+  {
+    tag: 'Oral Contraceptive', 
+    tagType: 'class', 
+    effect: 'Antibiotics may affect the gut flora, leading to lower estrogen reabsorption and reduced efficacy of combined oral estrogen/progesterone contraceptives.', 
+    severity: '0'
+  }
+];
+
+const AmoxicillinInteractions = [
+  {
+    tag: 'Warfarin',
+    tagType: 'chemicalName',
+    effect: 'Affects INR. Monitor INR closely.',
+    severity: '1'
+  },
+  {
+    tag: 'Probenecid',
+    tagType: 'chemicalName',
+    effect: 'Reduced excretion of amoxicillin, resulting in increased levels.',
+    severity: '1'
+  },
+  {
+    tag: 'Methotrextate',
+    tagType: 'chemicalName',
+    effect: 'Reduced excretion of methotrextate, resulting in higher risk of methotrexate toxicity.',
+    severity: '2'
+  }
+];
+
+const AmoxicillinCIs = [{tag: 'Infectious mononucleosis', details: 'Causes non-allergic rash.'}];
+
+
 /******************************************************The Compendium of Pharmaceuticals To Be Exported To Emma*************************************************************************/
 const Compendium = {
   atorvastatin: {
@@ -350,6 +384,133 @@ const Compendium = {
     contraindications: [...EstrogenOCContraindications],
     doseRange: '1tab'
   },
+  amoxicillin: {
+    chemicalName: 'Amoxicillin',
+    tradeNames: ['Amoxicillin', 'Amoxil', 'Apo-amoxi', 'Novamoxin', 'Amoxil chewable', 'Novamoxin chewable'],
+    strengths: ['125mg', '250mg', '500mg', '50mg/ml', '25mg/ml'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      ...AmoxicillinInteractions
+    ],
+    crossAllergies: ['Beta-lactam'],
+    contraindications: [...AmoxicillinCIs],
+    doseRange: '0mg-3000mg'
+  },
+  amoxiClav: {
+    chemicalName: 'Amoxicillin/clavulanate',
+    tradeNames: ['Clavulin', 'Apo-amoxi clav', 'Amoxi clav'],
+    strengths: ['50mg&12.5mg/ml', '25mg & 6.25mg/ml', '400mg&57mg/5ml', '200mg & 28.5mg/5ml', '875mg&125mg', '500mg&125mg', '250mg&125mg'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      ...AmoxicillinInteractions
+    ],
+    crossAllergies: ['Beta-lactam', 'Amoxicillin/clavulanate', 'Clavulanate'],
+    contraindications: [...AmoxicillinCIs],
+    doseRange: '0mg-3000mg'
+  },
+  clavulanate: {
+    chemicalName: 'Clavulanate',
+    tradeNames: ['Clavulanate'],
+    strengths: ['N/A'],
+    class: 'Clavulanate',
+    indications: ['Infection'],
+    interactionTags: [],
+    crossAllergies: ['Amoxicillin/clavulanate', 'Clavulanate'],
+    contraindications: [],
+    doseRange: 'N/A'
+  },
+  penicillin: {
+    chemicalName: 'Penicillin',
+    tradeNames: ['Penicillin', 'Apo-Pen V-K', 'PEN V-K'],
+    strengths: ['300mg', '25mg/ml'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [...AllAntibioticInteractions],
+    crossAllergies: ['Beta-lactam'],
+    contraindications: [],
+    doseRange: '0mg-3000mg'
+  },
+  cloxacillin: {
+    chemicalName: 'Cloxacillin',
+    tradeNames: ['Cloxacillin', 'Orbenin', 'Apo-cloxi'],
+    strengths: ['500mg', '250mg'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [...AllAntibioticInteractions],
+    crossAllergies: ['Beta-lactam'],
+    contraindications: [],
+    doseRange: '0mg-4000mg'
+  },
+  ampicillin: {
+    chemicalName: 'Ampicillin',
+    tradeNames: ['Ampicillin', 'Penbritin'],
+    strengths: ['500mg', '250mg'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {
+        tag: 'Allopurinol',
+        tagType: 'chemicalName',
+        effect: 'Increased risk of rash.',
+        severity: '1'
+      }
+    ],
+    crossAllergies: ['Beta-lactam'],
+    contraindications: [],
+    doseRange: '0mg-2000mg'
+  },
+  cephalexin: {
+    chemicalName: 'Cephalexin',
+    tradeNames: ['Cephalexin', 'Cephalosporin', 'Ceporex', 'Keflex'], //Putting 'Cephalosporin' in as tradename is just a hack to make sure cephalosporin class will be recognized as a cross-allergy with other beta-lactams
+    strengths: ['500mg', '250mg', '50mg/ml', '25mg/ml'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [...AllAntibioticInteractions],
+    crossAllergies: ['Beta-lactam'],
+    contraindications: [],
+    doseRange: '0mg-4000mg'
+  },
+  cefprozil: {
+    chemicalName: 'Cefprozil',
+    tradeNames: ['Cefzil', 'Cefprozil', 'Cephalosporin'],
+    strengths: ['500mg', '250mg', '50mg/ml', '25mg/ml'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {
+        tag: ' Probenecid',
+        tagType: 'chemicalName',
+        effect: 'Increased levels of cefprozil.',
+        severity: '2'
+      },
+      {
+        tag: 'Aminoglycoside',
+        tagType: 'class',
+        effect: 'Risk of nephrotoxicity and ototoxicity with aminoglycosides. Monitor renal function.',
+        severity: '2'
+      }
+    ],
+    crossAllergies: ['Beta-lactam'],
+    contraindications: [],
+    doseRange: '0mg-1000mg'
+  },
+  cefixime: {
+    chemicalName: 'Cefixime',
+    tradeNames: ['Suprax', 'Cephalosporin', 'Cefixime'], //Putting 'Cephalosporin' in as tradename is just a hack to make sure cephalosporin class will be recognized as a cross-allergy with other beta-lactams
+    strengths: ['400mg', '20mg/ml'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [...AllAntibioticInteractions, {tag: 'Warfarin', tagType: 'chemicalName', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '1'}],
+    crossAllergies: ['Beta-lactam'],
+    contraindications: [],
+    doseRange: '0mg-400mg'
+  }
 }; 
 
 module.exports = {
