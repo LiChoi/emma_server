@@ -64,7 +64,7 @@ CYP3A4_statin_interactions = CYP3A4_statin_interactions.concat(
 ); 
 CYP3A4_statin_interactions.push(
   {
-    tag: 'CYP3A4_inhibitor', tagType: 'tag', effect: 'Concomitant administration can lead to increased level and toxicity of the statin.', severity: '3'
+    tag: 'CYP3A4-inhibitor', tagType: 'tag', effect: 'Concomitant administration can lead to increased level and toxicity of the statin.', severity: '3'
   }
 );
 
@@ -342,7 +342,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: '10mg-80mg',
-    tags: ['CYP3A4_metabolized']
+    tags: ['CYP3A4-substrate']
   },
   lovastatin: {
     chemicalName: 'Lovastatin',
@@ -354,7 +354,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: '20mg-80mg',
-    tags: ['CYP3A4_metabolized']
+    tags: ['CYP3A4-substrate']
   },
   simvastatin: {
     chemicalName: 'Simvastatin',
@@ -366,7 +366,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: "20mg-80mg",
-    tags: ['CYP3A4_metabolized']
+    tags: ['CYP3A4-substrate']
   },
   rosuvastatin: {
     chemicalName: 'Rosuvastatin',
@@ -512,7 +512,10 @@ const Compendium = {
     strengths: ['300mg', '25mg/ml'],
     class: 'Beta-lactam',
     indications: ['Infection'],
-    interactionTags: [...AllAntibioticInteractions],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {tag: 'Tetracycline', tagType: 'class', effect: 'Reduced effect of penicillin.', severity: '3'},
+    ],
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-3000mg',
@@ -526,7 +529,9 @@ const Compendium = {
     indications: ['Infection'],
     interactionTags: [...AllAntibioticInteractions],
     crossAllergies: ['Beta-lactam'],
-    contraindications: [],
+    contraindications: [
+      {tag: 'Food', details: 'Take on empty stomach.'}
+    ],
     doseRange: '0mg-4000mg',
     tags: []
   },
@@ -773,7 +778,7 @@ const Compendium = {
       {tag: 'QT-prolongation', tagType: 'tag', effect: 'Both drugs cause QT-prolongation. Risk of arrythmia.', severity: '3'},
       {tag: 'Sulphonyluria', tagType: 'class', effect: 'Potential hypoglycemia. Monitor blood sugar closely.', severity: '2'},
       {tag: 'Insulin', tagType: 'class', effect: 'Potential hypoglycemia. Monitor blood sugar closely.', severity: '2'},
-      {tag: 'CYP3A4_metabolized', tagType: 'tag', effect: 'Clarithromycin significantly increases level of the co-administered drug.', severity: '3'},
+      {tag: 'CYP3A4-substrate', tagType: 'tag', effect: 'Clarithromycin significantly increases level of the co-administered drug.', severity: '3'},
       {tag: 'Pgp-substrate', tagType: 'tag', effect: 'Increased concentration of drugs transported by Pgp.', severity: '2'},
       {tag: 'Warfarin', tagType: 'tag', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '2'}
     ],
@@ -784,7 +789,7 @@ const Compendium = {
       {tag: 'Pregnant', details: 'Should not be taken during pregnancy, particularly during the first trimester.'}
     ],
     doseRange: '0mg-1000mg',
-    tags: ['QT-prolongation', 'CYP3A4_inhibitor', 'Pgp-inhibitor', 'Increases INR']
+    tags: ['QT-prolongation', 'CYP3A4-inhibitor', 'Pgp-inhibitor', 'Increases INR']
   },
   erythromycin: {
     chemicalName: 'Erythromycin',
@@ -797,13 +802,14 @@ const Compendium = {
       ...MacrolideInteractions,
       {tag: 'QT-prolongation', tagType: 'tag', effect: 'Both drugs cause QT-prolongation. Risk of arrythmia.', severity: '3'},
       {tag: 'Ergot alkaloids', tagType: 'class', effect: 'Contraindicated due to ergot toxicity, peripheral ischemia.', severity: '3'},
-      {tag: 'CYP3A4_metabolized', tagType: 'tag', effect: 'Clarithromycin significantly increases level of the co-administered drug.', severity: '3'},
-      {tag: 'Warfarin', tagType: 'chemicalName', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '2'}
+      {tag: 'CYP3A4-substrate', tagType: 'tag', effect: 'Clarithromycin significantly increases level of the co-administered drug.', severity: '3'},
+      {tag: 'Warfarin', tagType: 'chemicalName', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '2'},
+      {tag: 'Clindamycin', tagType: 'chemical', effect: 'Antibiotics countereact each other.', severity: '3'},
     ],
     crossAllergies: ['Macrolide'],
     contraindications: [],
     doseRange: '0mg-2000mg',
-    tags: ['QT-prolongation', 'CYP3A4_inhibitor', 'Increases INR']
+    tags: ['QT-prolongation', 'CYP3A4-inhibitor', 'Increases INR']
   },
   septra: {
     chemicalName: 'Sulfamethoxazole/Trimethoprim',
@@ -833,6 +839,113 @@ const Compendium = {
     ],
     doseRange: '0mg-320mg',
     tags: ['Trimethoprim', 'Sulfamethoxazole', 'Increases INR', 'Increases K+', 'CYP2C9-inhibitor', 'CYP2C8-inhibitor']
+  },
+  doxycycline: {
+    chemicalName: 'Doxycycline',
+    tradeNames: ['Vibramycin', 'Doxycycline', 'Apo-doxy', 'Periostat'], 
+    strengths: ['100mg', '20mg'],
+    class: 'Tetracycline',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {tag: 'Tetracycline', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'},
+      {tag: 'Isotretinoin', tagType: 'chemicalName', effect: 'Combination contraindicated.', severity: '3'},
+      {tag: 'Anticoagulant', tagType: 'class', effect: 'Increased bleeding risk.', severity: '2'},
+      {tag: 'Antacid', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Calcium', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Magnesium', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Iron', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Bismuth subsalicylate', tagType: 'class', effect: 'Reduces absorption of antibiotic.', severity: '2'},
+      {tag: 'Penicillin', tagType: 'chemical', effect: 'Reduced effect of penicillin.', severity: '3'}
+    ],
+    crossAllergies: ['Tetracycline'],
+    contraindications: [
+      {tag: 'Myasthenia gravis', details: ''},
+      {tag: 'Pregnant', details: 'May cause permanent discoloration of teeth in newborn.'},
+      {tag: 'Breastfeeding', details: 'May cause permanent discoloration of teeth in newborn.'},
+      {tag: 'age<=8', details: 'May cause permanent discoloration of teeth.'},
+      {tag: 'Alcohol', details: 'Reduced effect of antibiotic.'},
+    ],
+    doseRange: '100mg-200mg',
+    tags: ['Increases INR']
+  },
+  minocycline: {
+    chemicalName: 'Minocycline',
+    tradeNames: ['Minocin', 'Minocycline'], 
+    strengths: ['50mg', '100mg'],
+    class: 'Tetracycline',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {tag: 'Tetracycline', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'},
+      {tag: 'Anticoagulant', tagType: 'class', effect: 'Increased bleeding risk.', severity: '2'},
+      {tag: 'Antacid', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Calcium', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Magnesium', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Iron', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Bismuth subsalicylate', tagType: 'class', effect: 'Reduces absorption of antibiotic.', severity: '2'},
+      {tag: 'Penicillin', tagType: 'chemical', effect: 'Reduced effect of penicillin.', severity: '3'}
+    ],
+    crossAllergies: ['Tetracycline'],
+    contraindications: [
+      {tag: 'Pregnant', details: 'May cause permanent discoloration of teeth in newborn.'},
+      {tag: 'Breastfeeding', details: 'May cause permanent discoloration of teeth in newborn.'},
+      {tag: 'age<13', details: 'May cause permanent discoloration of teeth.'},
+      {tag: 'Alcohol', details: 'Liver toxicity.'},
+    ],
+    doseRange: '50mg-200mg',
+    tags: ['Increases INR']
+  },
+  tetracycline: {
+    chemicalName: 'Tetracycline',
+    tradeNames: ['Tetracycline'], 
+    strengths: ['250mg'],
+    class: 'Tetracycline',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {tag: 'Tetracycline', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'},
+      {tag: 'Anticoagulant', tagType: 'class', effect: 'Increased bleeding risk.', severity: '2'},
+      {tag: 'Antacid', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Calcium', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Magnesium', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Iron', tagType: 'class', effect: 'Binds to antibiotic and reduces absorption. Space them out.', severity: '2'},
+      {tag: 'Bismuth subsalicylate', tagType: 'class', effect: 'Reduces absorption of antibiotic.', severity: '2'},
+      {tag: 'Penicillin', tagType: 'chemical', effect: 'Reduced effect of penicillin.', severity: '3'},
+      {tag: 'Methoxyflurane', tagType: 'chemical', effect: 'Severely impairs renal function in combination.', severity: '3'}
+    ],
+    crossAllergies: ['Tetracycline'],
+    contraindications: [
+      {tag: 'Active liver disease', details: ''},
+      {tag: 'Poor renal function', details: ''},
+      {tag: 'Pregnant', details: 'May cause permanent discoloration of teeth in newborn.'},
+      {tag: 'Breastfeeding', details: 'May cause permanent discoloration of teeth in newborn.'},
+      {tag: 'age<12', details: 'May cause permanent discoloration of teeth.'},
+      {tag: 'Alcohol', details: 'Reduced effect of antibiotic.'},
+      {tag: 'Food', details: 'Take on empty stomach.'}
+    ],
+    doseRange: '250mg-2000mg',
+    tags: ['Increases INR']
+  },
+  clindamycin: {
+    chemicalName: 'Clindamycin',
+    tradeNames: ['Dalacin', 'Clindamycin'], 
+    strengths: ['150mg', '300mg', '15mg/ml'],
+    class: 'Clindamycin',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {tag: 'Erythromycin', tagType: 'chemical', effect: 'Antibiotics countereact each other.', severity: '3'},
+      {tag: 'CYP3A4-inhibitor', tagType: 'tag', effect: 'Increased level of clindamycin.', severity: '2'},
+      {tag: 'CYP3A4-inducer', tagType: 'tag', effect: 'Decreased level of clindamycin.', severity: '2'}
+    ],
+    crossAllergies: ['Clindamycin'],
+    contraindications: [
+      {tag: 'age==0', details: 'Until further clinical experience is obtained CLINDAMYCIN is not indicated in the newborn (infant below 30 days of age).'},
+      {tag: 'Breastfeeding', details: 'Gets into breastmilk.'} 
+    ],
+    doseRange: '0mg-1800mg',
+    tags: ['CYP3A4-substrate']
   },
   warfarin: {
     chemicalName: 'Warfarin',
@@ -893,10 +1006,3 @@ const Compendium = {
 module.exports = {
   Compendium 
 };
-
-
-/*
-Concomitant administration of clarithromycin with astemizole, cisapride, colchicine,
-pimozide, terfenadine, lovastatin, simvastatin, ergot alkaloids (e.g., ergotamine,
-dihydroergotamine) is contraindicated
-*/

@@ -18,6 +18,7 @@ const AddRelatedTerms = (primaryTerm, relatedTerms) => {
 AddRelatedTerms('Pregnant', ['Pregnancy']);
 AddRelatedTerms('Breastfeeding', ['Nursing']);
 AddRelatedTerms('Smoking', ['Smokes', 'Smoker']);
+AddRelatedTerms('Alcohol', ['Drinks', 'Beer', 'Wine', 'Hooch']);
 AddRelatedTerms('High alcohol intake', ['Alcoholism', 'Alcohol abuse', 'Alcoholic']);
 AddRelatedTerms('Hypertension', ["High blood pressure"]);
 AddRelatedTerms('Hyperlipidemia', ["Hypercholesterolemia", "Lipid disorder", "High blood cholesterol", "High cholesterol", "Bad cholesterol"]);
