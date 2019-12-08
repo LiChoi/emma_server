@@ -27,6 +27,7 @@ AddRelatedTerms('Ventricular tachycardia', ["VT"]);
 AddRelatedTerms('Diabetes', ['Type 1 diabetes', 'Type 2 diabetes', 'Type one diabetes', 'Type two diabetes', 'Diabetes Mellitus', 'High blood sugar']);
 AddRelatedTerms('Diabetic neuropathy', ['Diabetic foot', 'Diabetic nerve pain']);
 AddRelatedTerms('Active liver disease', ['Liver disease', 'Bad liver', 'Cirrhosis', 'Liver cirrhosis', 'Hepatic insufficiency', 'Alcoholic liver', 'Hepatitis', 'Chronic liver disease']);
+AddRelatedTerms('Poor renal function', ['Renal dysfunction', 'Kidney failure', 'Poor renal clearance', 'Kidney problems', 'Bad kidneys']);
 
 //console.log(Conditions); 
       

@@ -79,6 +79,10 @@ const FibrateCIs = [
   {
     tag: 'crcl<20', //All creatinine clearance values must be in ml/min
     details: 'Significantly increased levels of drug.'
+  },
+  {
+    tag: 'Poor renal function', //All creatinine clearance values must be in ml/min
+    details: 'Significantly increased levels of drug.'
   }, 
   {
     tag: 'Hepatic insufficiency', 
@@ -228,6 +232,12 @@ const AllAntibioticInteractions = [
 
 const AmoxicillinInteractions = [
   {
+    tag: 'Beta-lactam',
+    tagType: 'class',
+    effect: 'Same class - duplicate therapy.',
+    severity: '2'
+  },
+  {
     tag: 'Warfarin',
     tagType: 'chemicalName',
     effect: 'Affects INR. Monitor INR closely.',
@@ -249,6 +259,81 @@ const AmoxicillinInteractions = [
 
 const AmoxicillinCIs = [{tag: 'Infectious mononucleosis', details: 'Causes non-allergic rash.'}];
 
+const CephalosporinInteractions = [
+  {
+    tag: 'Beta-lactam',
+    tagType: 'class',
+    effect: 'Same class - duplicate therapy.',
+    severity: '2'
+  }
+];
+
+const FluoroquinoloneInteractions = [
+  {
+    tag: 'Fluoroquinolone',
+    tagType: 'class',
+    effect: 'Same class - duplicate therapy.',
+    severity: '2'
+  },
+  {
+    tag: 'Warfarin',
+    tagType: 'chemicalName',
+    effect: 'Increased effect of warfarin. Monitor INR closely.',
+    severity: '2'
+  },
+  {
+    tag: 'Antacid',
+    tagType: 'class',
+    effect: 'Binds to and reduces absorption of the antibiotic.',
+    severity: '2'
+  },
+  {
+    tag: 'Iron',
+    tagType: 'class',
+    effect: 'Binds to and reduces absorption of the antibiotic.',
+    severity: '2'
+  },
+  {
+    tag: 'Calcium',
+    tagType: 'class',
+    effect: 'Binds to and reduces absorption of the antibiotic.',
+    severity: '2'
+  },
+  {
+    tag: 'Corticosteroid',
+    tagType: 'class',
+    effect: 'Increased risk of tendon rupture with this combination. Use with caution.',
+    severity: '2'
+  }
+];
+
+const FluoroquinoloneCIs = [
+  {
+    tag: 'age<=18',
+    details: 'Limited data in this age group. Possible damage to weight-bearing joints in pre-pubertal patients.'
+  },
+  {
+    tag: 'age>60',
+    details: 'Higher risk of tendon rupture, QT-prolongation in this age group. Use with caution.'
+  },
+  {
+    tag: 'Tendinitis',
+    details: 'Risk of tendon rupture.'
+  },
+  {
+    tag: 'Seizures',
+    details: 'Increased risk of seizure. Use with caution.'
+  },
+  {
+    tag: 'Myasthenia gravis',
+    details: 'May worsen muscle weakness.'
+  },
+  {
+    tag: 'Breastfeeding',
+    details: 'Excreted in milk. Possible damage to developing joints.'
+  }
+];
+
 
 /******************************************************The Compendium of Pharmaceuticals To Be Exported To Emma*************************************************************************/
 const Compendium = {
@@ -261,7 +346,8 @@ const Compendium = {
     interactionTags: [...CYP3A4_statin_interactions].concat(StatinInteractions), 
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
-    doseRange: '10mg-80mg'
+    doseRange: '10mg-80mg',
+    tags: []
   },
   lovastatin: {
     chemicalName: 'Lovastatin',
@@ -272,7 +358,8 @@ const Compendium = {
     interactionTags: [...CYP3A4_statin_interactions].concat(StatinInteractions),
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
-    doseRange: '20mg-80mg'
+    doseRange: '20mg-80mg',
+    tags: []
   },
   simvastatin: {
     chemicalName: 'Simvastatin',
@@ -283,7 +370,8 @@ const Compendium = {
     interactionTags: [...CYP3A4_statin_interactions].concat(StatinInteractions), 
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
-    doseRange: "20mg-80mg"
+    doseRange: "20mg-80mg",
+    tags: []
   },
   rosuvastatin: {
     chemicalName: 'Rosuvastatin',
@@ -294,7 +382,8 @@ const Compendium = {
     interactionTags: StatinInteractions,
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
-    doseRange: '5mg-40mg'
+    doseRange: '5mg-40mg',
+    tags: []
   },
   pravastatin: {
     chemicalName: 'Pravastatin',
@@ -305,7 +394,8 @@ const Compendium = {
     interactionTags: [...StatinInteractions, {tag: 'Cyclosporine', tagType: 'chemicalName', effect: "Significantly increased levels of pravastatin.", severity: '3'}],
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
-    doseRange: '20mg-80mg'
+    doseRange: '20mg-80mg',
+    tags: []
   },
   fenofibrateSupra: {
     chemicalName: 'Fenofibrate',
@@ -316,7 +406,8 @@ const Compendium = {
     interactionTags: [...FibrateInteractions],
     crossAllergies: [...FibrateAllergies],
     contraindications: [...FibrateCIs],
-    doseRange: '100mg-200mg'
+    doseRange: '100mg-200mg',
+    tags: []
   },
   fenofibrateEZ: {
     chemicalName: 'Fenofibrate EZ',
@@ -327,7 +418,8 @@ const Compendium = {
     interactionTags: [...FibrateInteractions],
     crossAllergies: [...FibrateAllergies],
     contraindications: [...FibrateCIs],
-    doseRange: '48mg-145mg'
+    doseRange: '48mg-145mg',
+    tags: []
   },
   gemfibrozil: {
     chemicalName: 'Gemfibrozil',
@@ -338,7 +430,8 @@ const Compendium = {
     interactionTags: [...FibrateInteractions, {tag: 'Repaglinide', tagType: 'chemicalName', effect: 'Severe hypoglycemia', severity: '3'}],
     crossAllergies: [...FibrateAllergies],
     contraindications: [...FibrateCIs],
-    doseRange: '1200mg-1500mg'
+    doseRange: '1200mg-1500mg',
+    tags: []
   },
   ezetimibe : {
     chemicalName: 'Ezetimibe',
@@ -349,7 +442,8 @@ const Compendium = {
     interactionTags: [{tag: 'Fibrate', tagType: 'class', effect: 'Increased level of ezetimibe.', severity: '1'},{tag: 'Cyclosporine', tagType: 'chemicalName', effect: 'Increased level of ezetimibe.', severity: '2'}],
     crossAllergies: ['Ezetimibe'],
     contraindications: [{tag: 'Active liver disease', details: 'Contraindicated in combination with statin and active liver disease.'}],
-    doseRange: '10mg'
+    doseRange: '10mg',
+    tags: []
   },
   cholestyramine: {
     chemicalName: 'Cholestyramine',
@@ -360,7 +454,8 @@ const Compendium = {
     interactionTags: [{tag: 'All', tagType: 'All', effect: 'Take other medication 1 hour before or 4-6 hours after cholestyramine or else it will reduce their absorption.', severity: '2'}],
     crossAllergies: ['Cholestyramine'],
     contraindications: [{tag: 'Biliary obstruction', details: 'It will worsen condition.'}],
-    doseRange: '4g-24g'
+    doseRange: '4g-24g',
+    tags: []
   },
   nicotinicAcid: {
     chemicalName: 'Nicotinic acid',
@@ -371,7 +466,8 @@ const Compendium = {
     interactionTags: [{tag: 'Lovastatin', tagType: 'chemicalName', effect: 'Risk of myopathy.', severity: '2'}],
     crossAllergies: ['Nicotinic acid'],
     contraindications: [{tag: 'Peptic ulcer disease', details: 'It will worsen the condition.'},{tag: 'Chronic liver disease', details: 'It will worsen the condition.'},{tag: 'Gout', details: 'It will worsen the condition.'}],
-    doseRange: '500mg-2000mg'
+    doseRange: '500mg-2000mg',
+    tags: []
   },
   oralContraceptive: {
     chemicalName: "Ethinyl-estradiol/progesterone-analogue",
@@ -382,7 +478,8 @@ const Compendium = {
     interactionTags: [...EstrogenOCInteractions],
     crossAllergies: ['Ethinyl estradiol'],
     contraindications: [...EstrogenOCContraindications],
-    doseRange: '1tab'
+    doseRange: '1tab',
+    tags: []
   },
   amoxicillin: {
     chemicalName: 'Amoxicillin',
@@ -396,7 +493,8 @@ const Compendium = {
     ],
     crossAllergies: ['Beta-lactam'],
     contraindications: [...AmoxicillinCIs],
-    doseRange: '0mg-3000mg'
+    doseRange: '0mg-3000mg',
+    tags: []
   },
   amoxiClav: {
     chemicalName: 'Amoxicillin/clavulanate',
@@ -410,7 +508,8 @@ const Compendium = {
     ],
     crossAllergies: ['Beta-lactam', 'Amoxicillin/clavulanate', 'Clavulanate'],
     contraindications: [...AmoxicillinCIs],
-    doseRange: '0mg-3000mg'
+    doseRange: '0mg-3000mg',
+    tags: []
   },
   clavulanate: {
     chemicalName: 'Clavulanate',
@@ -421,7 +520,8 @@ const Compendium = {
     interactionTags: [],
     crossAllergies: ['Amoxicillin/clavulanate', 'Clavulanate'],
     contraindications: [],
-    doseRange: 'N/A'
+    doseRange: 'N/A',
+    tags: []
   },
   penicillin: {
     chemicalName: 'Penicillin',
@@ -432,7 +532,8 @@ const Compendium = {
     interactionTags: [...AllAntibioticInteractions],
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
-    doseRange: '0mg-3000mg'
+    doseRange: '0mg-3000mg',
+    tags: []
   },
   cloxacillin: {
     chemicalName: 'Cloxacillin',
@@ -443,7 +544,8 @@ const Compendium = {
     interactionTags: [...AllAntibioticInteractions],
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
-    doseRange: '0mg-4000mg'
+    doseRange: '0mg-4000mg',
+    tags: []
   },
   ampicillin: {
     chemicalName: 'Ampicillin',
@@ -462,7 +564,8 @@ const Compendium = {
     ],
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
-    doseRange: '0mg-2000mg'
+    doseRange: '0mg-2000mg',
+    tags: []
   },
   cephalexin: {
     chemicalName: 'Cephalexin',
@@ -470,10 +573,11 @@ const Compendium = {
     strengths: ['500mg', '250mg', '50mg/ml', '25mg/ml'],
     class: 'Beta-lactam',
     indications: ['Infection'],
-    interactionTags: [...AllAntibioticInteractions],
+    interactionTags: [...AllAntibioticInteractions, ...CephalosporinInteractions],
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
-    doseRange: '0mg-4000mg'
+    doseRange: '0mg-4000mg',
+    tags: []
   },
   cefprozil: {
     chemicalName: 'Cefprozil',
@@ -483,6 +587,7 @@ const Compendium = {
     indications: ['Infection'],
     interactionTags: [
       ...AllAntibioticInteractions,
+      ...CephalosporinInteractions,
       {
         tag: ' Probenecid',
         tagType: 'chemicalName',
@@ -498,18 +603,155 @@ const Compendium = {
     ],
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
-    doseRange: '0mg-1000mg'
+    doseRange: '0mg-1000mg',
+    tags: []
   },
   cefixime: {
     chemicalName: 'Cefixime',
-    tradeNames: ['Suprax', 'Cephalosporin', 'Cefixime'], //Putting 'Cephalosporin' in as tradename is just a hack to make sure cephalosporin class will be recognized as a cross-allergy with other beta-lactams
+    tradeNames: ['Suprax', 'Cephalosporin', 'Cefixime'], 
     strengths: ['400mg', '20mg/ml'],
     class: 'Beta-lactam',
     indications: ['Infection'],
-    interactionTags: [...AllAntibioticInteractions, {tag: 'Warfarin', tagType: 'chemicalName', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '1'}],
+    interactionTags: [...AllAntibioticInteractions, ...CephalosporinInteractions, {tag: 'Warfarin', tagType: 'chemicalName', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '1'}],
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
-    doseRange: '0mg-400mg'
+    doseRange: '0mg-400mg',
+    tags: []
+  },
+  cefuroxime: {
+    chemicalName: 'Cefuroxime',
+    tradeNames: ['Ceftin', 'Cephalosporin', 'Cefuroxime'], 
+    strengths: ['250mg', '500mg', '125mg/5ml'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions, 
+      ...CephalosporinInteractions,
+      {
+        tag: 'Antacid', 
+        tagType: 'class', 
+        effect: 'Acid reducers decrease absorption of this antibiotic.', 
+        severity: '2'
+      },
+      {
+        tag: 'Proton pump inhibitor', 
+        tagType: 'class', 
+        effect: 'Acid reducers decrease absorption of this antibiotic.', 
+        severity: '2'
+      }
+    ],
+    crossAllergies: ['Beta-lactam'],
+    contraindications: [],
+    doseRange: '0mg-1000mg',
+    tags: []
+  },
+  cefaclor: {
+    chemicalName: 'Cefaclor',
+    tradeNames: ['Ceclor', 'Cephalosporin', 'Cefaclor'], 
+    strengths: ['500mg', '250mg', '50mg/ml', '25mg/ml', '375mg/5ml'],
+    class: 'Beta-lactam',
+    indications: ['Infection'],
+    interactionTags: [...AllAntibioticInteractions, ...CephalosporinInteractions],
+    crossAllergies: ['Beta-lactam'],
+    contraindications: [],
+    doseRange: '0mg-2000mg',
+    tags: []
+  },
+  ciprofloxacin: {
+    chemicalName: 'Ciprofloxacin',
+    tradeNames: ['Ciprofloxacin', 'Cipro', 'Cipro XL', 'Apo-ciproflox'],
+    strengths: ['250mg', '500mg', '750mg', '1000mg', '100mg/ml'],
+    class: 'Fluoroquinolone',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      ...FluoroquinoloneInteractions,
+      {
+        tag: 'Theophylline',
+        tagType: 'chemicalName',
+        effect: 'Increased level of theophylline.',
+        severity: '2'
+      },
+      {
+        tag: 'Caffeine',
+        tagType: 'chemicalName',
+        effect: 'Increased effect of caffeine.',
+        severity: '1'
+      },
+      {
+        tag: 'Probenecid',
+        tagType: 'chemicalName',
+        effect: 'Increased level of the antibiotic.',
+        severity: '2'
+      }
+    ],
+    crossAllergies: ['Fluoroquinolones'],
+    contraindications: [
+      ...FluoroquinoloneCIs
+    ],
+    doseRange: '0mg-1500mg',
+    tags: []
+  },
+  levofloxacin: {
+    chemicalName: 'Levofloxacin',
+    tradeNames: ['Levaquin', 'Levofloxacin'], 
+    strengths: ['250mg', '500mg', '750mg'],
+    class: 'Fluoroquinolone',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      ...FluoroquinoloneInteractions,
+      {
+        tag: 'QT-prolongation',
+        tagType: 'tag',
+        effect: 'Both drugs cause QT-prolongation - risk of arrythmia.',
+        severity: '2'
+      }
+    ],
+    crossAllergies: ['Fluoroquinolones'],
+    contraindications: [
+      ...FluoroquinoloneCIs
+    ],
+    doseRange: '250mg-750mg',
+    tags: ['QT-prolongation']
+  },
+  moxifloxacin: {
+    chemicalName: 'Moxifloxacin',
+    tradeNames: ['Avelox', 'Moxifloxacin'], 
+    strengths: ['400mg'],
+    class: 'Fluoroquinolone',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      ...FluoroquinoloneInteractions,
+      {
+        tag: 'QT-prolongation',
+        tagType: 'tag',
+        effect: 'Both drugs cause QT-prolongation - risk of arrythmia.',
+        severity: '2'
+      }
+    ],
+    crossAllergies: ['Fluoroquinolones'],
+    contraindications: [
+      ...FluoroquinoloneCIs
+    ],
+    doseRange: '400mg',
+    tags: ['QT-prolongation']
+  },
+  norfloxacin: {
+    chemicalName: 'Norfloxacin',
+    tradeNames: ['Noroxin', 'Norfloxacin'], 
+    strengths: ['400mg'],
+    class: 'Fluoroquinolone',
+    indications: ['UTI'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      ...FluoroquinoloneInteractions
+    ],
+    crossAllergies: ['Fluoroquinolones'],
+    contraindications: [...FluoroquinoloneCIs],
+    doseRange: '400mg-800mg',
+    tags: []
   }
 }; 
 
