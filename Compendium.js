@@ -1,14 +1,14 @@
 /***************************************************************CYP3A4 tags**********************************************************************************/ 
-const CYP3A4_metabolized = ['Atorvastatin', 'chemicalName', 'Lovastatin', 'Simvastatin'];
+const CYP3A4_metabolized = ['Atorvastatin', 'Lovastatin', 'Simvastatin'];
 const CYP3A4_inhibitors = [
   {
     tag: 'Amiodarone', 
     tagType: 'chemicalName'
   }, 
-  {
-    tag: 'Clarithroymycin', 
-    tagType: 'chemicalName'
-  }, 
+  //{
+  //  tag: 'Clarithroymycin', 
+  //  tagType: 'chemicalName'
+  //}, 
   {
     tag:'Cyclosporine',
     tagType: 'chemicalName'
@@ -54,7 +54,7 @@ const StatinInteractions = [
   },
   {
     tag: 'Cholestyramine', tagType: 'chemicalName', effect: 'Must be taken 1 hour before or 4 hours after cholestyramine or else reduced absorption of drug.', severity: '2'
-  }
+  },
 ];
 /* 
 CYP3A4 statins only...
@@ -72,6 +72,11 @@ CYP3A4_statin_interactions = CYP3A4_statin_interactions.concat(
     return {tag: inhibitor.tag, tagType: inhibitor.tagType, effect: 'Concomitant administration can lead to increased plasma concentrations of the statin', severity: '3'}; 
   })
 ); 
+CYP3A4_statin_interactions.push(
+  {
+    tag: 'CYP3A4_inhibitor', tagType: 'tag', effect: 'Concomitant administration can lead to increased plasma concentration of the statin.', severity: '3'
+  }
+);
 //console.log(CYP3A4_statin_interactions); 
 
 /************************************************************Fibrate commonalities***************************************************************************************/
@@ -334,6 +339,11 @@ const FluoroquinoloneCIs = [
   }
 ];
 
+const MacrolideCIs = [
+  {tag: 'Active liver disease', details: 'Impaired elimination of drug.'}, 
+  {tag: 'Biliary obstruction', details: 'Impaired elimination of drug.'}
+];
+
 
 /******************************************************The Compendium of Pharmaceuticals To Be Exported To Emma*************************************************************************/
 const Compendium = {
@@ -347,7 +357,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: '10mg-80mg',
-    tags: []
+    tags: ['CYP3A4_metabolized']
   },
   lovastatin: {
     chemicalName: 'Lovastatin',
@@ -359,7 +369,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: '20mg-80mg',
-    tags: []
+    tags: ['CYP3A4_metabolized']
   },
   simvastatin: {
     chemicalName: 'Simvastatin',
@@ -371,7 +381,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: "20mg-80mg",
-    tags: []
+    tags: ['CYP3A4_metabolized']
   },
   rosuvastatin: {
     chemicalName: 'Rosuvastatin',
@@ -752,6 +762,34 @@ const Compendium = {
     contraindications: [...FluoroquinoloneCIs],
     doseRange: '400mg-800mg',
     tags: []
+  },
+  azithromycin: {
+    chemicalName: 'Azithromycin',
+    tradeNames: ['Z-pak', 'Zithromax', 'Azithromycin'], 
+    strengths: ['250mg', '200mg/5ml', '100mg/5ml'],
+    class: 'Macrolide',
+    indications: ['Infection'],
+    interactionTags: [...AllAntibioticInteractions],
+    crossAllergies: ['Macrolide'],
+    contraindications: [...MacrolideCIs],
+    doseRange: '0mg-2000mg',
+    tags: []
+  },
+  clarithromycin: {
+    chemicalName: 'Clarithromycin',
+    tradeNames: ['Biaxin', 'Clarithromycin'], 
+    strengths: ['250mg', '500mg', '250mg/5ml', '125mg/5ml'],
+    class: 'Macrolide',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {tag: 'QT-prolongation', tagType: 'tag', effect: 'Both drugs cause QT-prolongation. Risk of arrythmia.', severity: '3'},
+      {tag: 'CYP3A4_metabolized', tagType: 'tag', effect: 'Clarithromycin can increase level of the co-administered drug.', severity: '2'}
+    ],
+    crossAllergies: ['Macrolide'],
+    contraindications: [...MacrolideCIs, {tag: 'Crcl<30', details: 'Half dose only. Contraindicated if also has hepatic impairment.'} ],
+    doseRange: '0mg-2000mg',
+    tags: ['QT-prolongation', 'CYP3A4_inhibitor']
   }
 }; 
 
