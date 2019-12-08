@@ -26,8 +26,12 @@ AddRelatedTerms('Atrial fibrillation', ["A-fib", "AF"]);
 AddRelatedTerms('Ventricular tachycardia', ["VT"]); 
 AddRelatedTerms('Diabetes', ['Type 1 diabetes', 'Type 2 diabetes', 'Type one diabetes', 'Type two diabetes', 'Diabetes Mellitus', 'High blood sugar']);
 AddRelatedTerms('Diabetic neuropathy', ['Diabetic foot', 'Diabetic nerve pain']);
-AddRelatedTerms('Active liver disease', ['Liver disease', 'Bad liver', 'Cirrhosis', 'Liver cirrhosis', 'Hepatic insufficiency', 'Alcoholic liver', 'Hepatitis', 'Chronic liver disease']);
-AddRelatedTerms('Poor renal function', ['Renal dysfunction', 'Kidney failure', 'Poor renal clearance', 'Kidney problems', 'Bad kidneys']);
+AddRelatedTerms('Active liver disease', ['Liver disease', 'Bad liver', 'Cirrhosis', 'Liver cirrhosis', 'Hepatic insufficiency', 'Alcoholic liver', 'Hepatitis', 'Chronic liver disease', 'Hepatic impairment']);
+AddRelatedTerms('Poor renal function', ['Renal dysfunction', 'renal insufficiency', 'renal impairment', 'Poor renal clearance', 'Kidney problems', 'Bad kidneys']);
+AddRelatedTerms('Renal failure', ['Kidney failure'])
+AddRelatedTerms('Active bleeding', ['Bleeding', 'Internal bleeding', 'Hemorrhaging', 'Hemorrhage', 'Haemorrhage', 'Haemorrhaging']);
+AddRelatedTerms('Gastrointestinal ulcer', ['Peptic ulcer disease', 'PUD', 'Stomach ulcer']);
+AddRelatedTerms('G6PD', ['G6PD deficiency', 'glucose-6-phosphate dehydrogenase deficiency']);
 
 //console.log(Conditions); 
       

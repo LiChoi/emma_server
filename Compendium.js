@@ -56,28 +56,17 @@ const StatinInteractions = [
     tag: 'Cholestyramine', tagType: 'chemicalName', effect: 'Must be taken 1 hour before or 4 hours after cholestyramine or else reduced absorption of drug.', severity: '2'
   },
 ];
-/* 
-CYP3A4 statins only...
-Cytochrome P-450-mediated Interactions: Atorvastatin is metabolized by the cytochrome
-P-450 isoenzyme, CYP 3A4. Interaction may occur when LIPITOR is administered with
-inhibitors of cytochrome P450 3A4 such as grapefruit juice, some macrolide antibiotics (i.e.
-erythromycin, clarithromycin), immunosuppressants (cyclosporine), azole antifungal agents (i.e.
-itraconazole, ketoconazole), transporter inhibitors, HIV/HCV protease inhibitors, letermovir or
-the antidepressant, nefazodone. Concomitant administration can lead to increased plasma
-concentrations of atorvastatin 
-*/
 let CYP3A4_statin_interactions = [{tag: 'Gemfibrozil', tagType: 'chemicalName', effect: 'Increased toxicity. Breakdown of muscle tissue.', severity: '3' },{tag: 'Verapamil', tagType: 'chemicalName', effect: 'Increased toxicity. Breakdown of muscle tissue.', severity: '3' }];
 CYP3A4_statin_interactions = CYP3A4_statin_interactions.concat(
   CYP3A4_inhibitors.map((inhibitor)=>{
-    return {tag: inhibitor.tag, tagType: inhibitor.tagType, effect: 'Concomitant administration can lead to increased plasma concentrations of the statin', severity: '3'}; 
+    return {tag: inhibitor.tag, tagType: inhibitor.tagType, effect: 'Concomitant administration can lead to increased level and toxicity of the statin', severity: '3'}; 
   })
 ); 
 CYP3A4_statin_interactions.push(
   {
-    tag: 'CYP3A4_inhibitor', tagType: 'tag', effect: 'Concomitant administration can lead to increased plasma concentration of the statin.', severity: '3'
+    tag: 'CYP3A4_inhibitor', tagType: 'tag', effect: 'Concomitant administration can lead to increased level and toxicity of the statin.', severity: '3'
   }
 );
-//console.log(CYP3A4_statin_interactions); 
 
 /************************************************************Fibrate commonalities***************************************************************************************/
 const FibrateCIs = [
@@ -339,11 +328,7 @@ const FluoroquinoloneCIs = [
   }
 ];
 
-const MacrolideCIs = [
-  {tag: 'Active liver disease', details: 'Impaired elimination of drug.'}, 
-  {tag: 'Biliary obstruction', details: 'Impaired elimination of drug.'}
-];
-
+const MacrolideInteractions = [{tag: 'Macrolide', tagType: 'class', effect: 'Same class. Duplicate therapy.', severity: '2'}];
 
 /******************************************************The Compendium of Pharmaceuticals To Be Exported To Emma*************************************************************************/
 const Compendium = {
@@ -481,12 +466,12 @@ const Compendium = {
   },
   oralContraceptive: {
     chemicalName: "Ethinyl-estradiol/progesterone-analogue",
-    tradeNames: ['Ethinyl-estradiol', 'Diane 35', 'Alesse', 'Alysena', 'Aviane', 'Lutera', 'Triquilar', 'Triphasic', 'Min-ovral', 'Portia', 'Marvelon', 'Mirvala', 'Apri', 'Ortho-cept', 'Cyclen', 'Linessa', 'Tri cyclen', 'Tri cyclen lo', 'Tricira lo', 'Yasmin', 'Yaz', 'Minestrin', 'Loestrin', 'Demulen', 'Brevicon', 'Ortho 7/7/7', 'Seasonale', 'Seasonique'],
+    tradeNames: ['Diane 35', 'Alesse', 'Alysena', 'Aviane', 'Lutera', 'Triquilar', 'Triphasic', 'Min-ovral', 'Portia', 'Marvelon', 'Mirvala', 'Apri', 'Ortho-cept', 'Cyclen', 'Linessa', 'Tri cyclen', 'Tri cyclen lo', 'Tricira lo', 'Yasmin', 'Yaz', 'Minestrin', 'Loestrin', 'Demulen', 'Brevicon', 'Ortho 7/7/7', 'Seasonale', 'Seasonique'],
     strengths: ['1tab'],
     class: 'Oral contraceptive',
     indications: ['Birth control', 'Acne'],
     interactionTags: [...EstrogenOCInteractions],
-    crossAllergies: ['Ethinyl estradiol'],
+    crossAllergies: ['Ethinyl estradiol', 'Oral contraceptive', 'Norethindrone', 'Ethynodiol diacetate', 'Levonorgestrel', 'Norgestrel'],
     contraindications: [...EstrogenOCContraindications],
     doseRange: '1tab',
     tags: []
@@ -519,19 +504,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam', 'Amoxicillin/clavulanate', 'Clavulanate'],
     contraindications: [...AmoxicillinCIs],
     doseRange: '0mg-3000mg',
-    tags: []
-  },
-  clavulanate: {
-    chemicalName: 'Clavulanate',
-    tradeNames: ['Clavulanate'],
-    strengths: ['N/A'],
-    class: 'Clavulanate',
-    indications: ['Infection'],
-    interactionTags: [],
-    crossAllergies: ['Amoxicillin/clavulanate', 'Clavulanate'],
-    contraindications: [],
-    doseRange: 'N/A',
-    tags: []
+    tags: ['Clavulanate']
   },
   penicillin: {
     chemicalName: 'Penicillin',
@@ -579,7 +552,7 @@ const Compendium = {
   },
   cephalexin: {
     chemicalName: 'Cephalexin',
-    tradeNames: ['Cephalexin', 'Cephalosporin', 'Ceporex', 'Keflex'], //Putting 'Cephalosporin' in as tradename is just a hack to make sure cephalosporin class will be recognized as a cross-allergy with other beta-lactams
+    tradeNames: ['Cephalexin', 'Cephalosporin', 'Ceporex', 'Keflex'], //Putting 'Cephalosporin' in as tradename just so it will show up in suggested lists
     strengths: ['500mg', '250mg', '50mg/ml', '25mg/ml'],
     class: 'Beta-lactam',
     indications: ['Infection'],
@@ -587,11 +560,11 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-4000mg',
-    tags: []
+    tags: ['Cephalosporin']
   },
   cefprozil: {
     chemicalName: 'Cefprozil',
-    tradeNames: ['Cefzil', 'Cefprozil', 'Cephalosporin'],
+    tradeNames: ['Cefzil', 'Cefprozil'],
     strengths: ['500mg', '250mg', '50mg/ml', '25mg/ml'],
     class: 'Beta-lactam',
     indications: ['Infection'],
@@ -614,11 +587,11 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-1000mg',
-    tags: []
+    tags: ['Cephalosporin']
   },
   cefixime: {
     chemicalName: 'Cefixime',
-    tradeNames: ['Suprax', 'Cephalosporin', 'Cefixime'], 
+    tradeNames: ['Suprax', 'Cefixime'], 
     strengths: ['400mg', '20mg/ml'],
     class: 'Beta-lactam',
     indications: ['Infection'],
@@ -626,11 +599,11 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-400mg',
-    tags: []
+    tags: ['Cephalosporin']
   },
   cefuroxime: {
     chemicalName: 'Cefuroxime',
-    tradeNames: ['Ceftin', 'Cephalosporin', 'Cefuroxime'], 
+    tradeNames: ['Ceftin', 'Cefuroxime'], 
     strengths: ['250mg', '500mg', '125mg/5ml'],
     class: 'Beta-lactam',
     indications: ['Infection'],
@@ -653,11 +626,11 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-1000mg',
-    tags: []
+    tags: ['Cephalosporin']
   },
   cefaclor: {
     chemicalName: 'Cefaclor',
-    tradeNames: ['Ceclor', 'Cephalosporin', 'Cefaclor'], 
+    tradeNames: ['Ceclor', 'Cefaclor'], 
     strengths: ['500mg', '250mg', '50mg/ml', '25mg/ml', '375mg/5ml'],
     class: 'Beta-lactam',
     indications: ['Infection'],
@@ -665,7 +638,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-2000mg',
-    tags: []
+    tags: ['Cephalosporin']
   },
   ciprofloxacin: {
     chemicalName: 'Ciprofloxacin',
@@ -769,9 +742,12 @@ const Compendium = {
     strengths: ['250mg', '200mg/5ml', '100mg/5ml'],
     class: 'Macrolide',
     indications: ['Infection'],
-    interactionTags: [...AllAntibioticInteractions],
+    interactionTags: [...AllAntibioticInteractions, ...MacrolideInteractions],
     crossAllergies: ['Macrolide'],
-    contraindications: [...MacrolideCIs],
+    contraindications: [
+      {tag: 'Active liver disease', details: 'Impaired elimination of drug.'}, 
+      {tag: 'Biliary obstruction', details: 'Impaired elimination of drug.'}
+    ],
     doseRange: '0mg-2000mg',
     tags: []
   },
@@ -783,16 +759,144 @@ const Compendium = {
     indications: ['Infection'],
     interactionTags: [
       ...AllAntibioticInteractions,
+      ...MacrolideInteractions,
+      {tag: 'Midazolam', tagType: 'chemical', effect: 'Serious risk of CNS effects such as confusion, somnolence.', severity: '3'},
+      {tag: 'Astemizole', tagType: 'chemical', effect: 'Prolonged-QT. Contraindicated.', severity: '3'},
+      {tag: 'Cisapride', tagType: 'chemical', effect: 'Prolonged-QT. Contraindicated.', severity: '3'},
+      {tag: 'Pimozide', tagType: 'chemical', effect: 'Prolonged-QT. Contraindicated.', severity: '3'},
+      {tag: 'Terfenadine', tagType: 'chemical', effect: 'Prolonged-QT. Contraindicated.', severity: '3'},
+      {tag: 'Lovastatin', tagType: 'chemical', effect: 'Significantly increased level of the statin, risk of muscle breakdown. Contraindicated.', severity: '3'},
+      {tag: 'Simvastatin', tagType: 'chemical', effect: 'Significantly increased level of the statin, risk of muscle breakdown. Contraindicated.', severity: '3'},
+      {tag: 'Colchicine', tagType: 'chemicalName', effect: 'Risk of life threatening colchicine toxiciy.', severity: '3'},
+      {tag: 'Saquinavir', tagType: 'chemicalName', effect: 'Potential life threatening cardiac arrythmia.', severity: '3'},
+      {tag: 'Ergot alkaloids', tagType: 'class', effect: 'Contraindicated due to ergot toxicity, peripheral ischemia.', severity: '3'},
       {tag: 'QT-prolongation', tagType: 'tag', effect: 'Both drugs cause QT-prolongation. Risk of arrythmia.', severity: '3'},
-      {tag: 'CYP3A4_metabolized', tagType: 'tag', effect: 'Clarithromycin can increase level of the co-administered drug.', severity: '2'}
+      {tag: 'Sulphonyluria', tagType: 'class', effect: 'Potential hypoglycemia. Monitor blood sugar closely.', severity: '2'},
+      {tag: 'Insulin', tagType: 'class', effect: 'Potential hypoglycemia. Monitor blood sugar closely.', severity: '2'},
+      {tag: 'CYP3A4_metabolized', tagType: 'tag', effect: 'Clarithromycin significantly increases level of the co-administered drug.', severity: '3'},
+      {tag: 'Pgp-substrate', tagType: 'tag', effect: 'Increased concentration of drugs transported by Pgp.', severity: '2'},
+      {tag: 'Warfarin', tagType: 'tag', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '2'}
     ],
     crossAllergies: ['Macrolide'],
-    contraindications: [...MacrolideCIs, {tag: 'Crcl<30', details: 'Half dose only. Contraindicated if also has hepatic impairment.'} ],
+    contraindications: [
+      {tag: 'Poor renal function', details: 'Adjust dose accordingly. Contraindicated if also has hepatic impairment.'},
+      {tag: 'Hepatic impairment', details: 'Contraindicated if also has renal insufficiency.'},
+      {tag: 'Pregnant', details: 'Should not be taken during pregnancy, particularly during the first trimester.'}
+    ],
+    doseRange: '0mg-1000mg',
+    tags: ['QT-prolongation', 'CYP3A4_inhibitor', 'Pgp-inhibitor', 'Increases INR']
+  },
+  erythromycin: {
+    chemicalName: 'Erythromycin',
+    tradeNames: ['Eryc', 'Erythromycin', 'Erythrocin', 'EES', 'Erythro-S', 'Erythro-ES', 'Erythro-base'], 
+    strengths: ['250mg', '500mg'],
+    class: 'Macrolide',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      ...MacrolideInteractions,
+      {tag: 'QT-prolongation', tagType: 'tag', effect: 'Both drugs cause QT-prolongation. Risk of arrythmia.', severity: '3'},
+      {tag: 'Ergot alkaloids', tagType: 'class', effect: 'Contraindicated due to ergot toxicity, peripheral ischemia.', severity: '3'},
+      {tag: 'CYP3A4_metabolized', tagType: 'tag', effect: 'Clarithromycin significantly increases level of the co-administered drug.', severity: '3'},
+      {tag: 'Warfarin', tagType: 'chemicalName', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '2'}
+    ],
+    crossAllergies: ['Macrolide'],
+    contraindications: [],
     doseRange: '0mg-2000mg',
-    tags: ['QT-prolongation', 'CYP3A4_inhibitor']
+    tags: ['QT-prolongation', 'CYP3A4_inhibitor', 'Increases INR']
+  },
+  septra: {
+    chemicalName: 'Sulfamethoxazole/Trimethoprim',
+    tradeNames: ['Septra', 'Bactrim', 'Cotrimoxazole', 'Sulfamethoxazole/Trimethoprim', 'SMX/TMP', 'Sulfatrim', 'Teva-trimel'], 
+    strengths: ['40mg&8mg/ml', '400mg&80mg', '800mg&160mg'],
+    class: 'Sulfonamide',
+    indications: ['Infection'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {tag: 'Sulfonamide', tagType: 'class', effect: 'Duplicate therapy.', severity: '2'},
+      {tag: 'Warfarin', tagType: 'chemicalName', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '2'},
+      {tag: 'Phenytoin', tagType: 'chemicalName', effect: 'Higher levels of phenytoin. Monitor closely.', severity: '2'},
+      {tag: 'Methotrexate', tagType: 'chemicalName', effect: 'Increases free MTX levels.', severity: '2'},
+      {tag: 'Increases K+', tagType: 'tag', effect: 'Drugs that increase potassium have a cummulative effect.', severity: '2'},
+      {tag: 'CYP2C9-substrate', tagType: 'tag', effect: 'Sulfamethoxazole is a CYP2C9 inhibitor.', severity: '2'},
+      {tag: 'CYP2C8-substrate', tagType: 'tag', effect: 'Trimethoprim is a CYP2C8 inhibitor.', severity: '2'}
+    ],
+    crossAllergies: ['Sulfonamide', 'Trimethoprim', 'Sulfamethoxazole'],
+    contraindications: [
+      {tag: 'Poor renal function', details: ''},
+      {tag: 'Pregnant', details: 'Passes through placenta. May cause kernicterus.'},
+      {tag: 'Breastfeeding', details: 'Gets into breast milk. May cause kernicterus.'},
+      {tag: 'age==0', details: 'Contraindicated in infants less than 2 months of age.'},
+      {tag: 'Thrombocytopenia', details: ''},
+      {tag: 'Megaloblastic anemia', details: ''},
+      {tag: 'G6PD', details: ''}
+    ],
+    doseRange: '0mg-320mg',
+    tags: ['Trimethoprim', 'Sulfamethoxazole', 'Increases INR', 'Increases K+', 'CYP2C9-inhibitor', 'CYP2C8-inhibitor']
+  },
+  warfarin: {
+    chemicalName: 'Warfarin',
+    tradeNames: ['Coumadin', 'Warfarin'], 
+    strengths: ['1', '2', '2.5', '5'],
+    class: 'Anticoagulant',
+    indications: ['Prevent blood clots'],
+    interactionTags: [
+      {tag: 'Anticoagulant', tagType: 'class', effect: 'Combining anticoagulants increases risk of bleeding.', severity: '3'},
+      {tag: 'Antiplatelet', tagType: 'class', effect: 'Combining with antiplatelet increases risk of bleeding.', severity: '2'},
+      {tag: 'Increases INR', tagType: 'tag', effect: 'Increased risk of bleeding. Monitor INR closely.', severity: '2'},
+      {tag: 'CYP2C9-inhibitor', tagType: 'tag', effect: 'Increased warfarin level. Adjust dose based on INR accordingly.', severity: '2'},
+      {tag: 'NSAID', tagType: 'class', effect: 'NSAIDs inhibit platelet aggregation. Increased bleeding risk.', severity: '2'}
+    ],
+    crossAllergies: ['Warfarin'],
+    contraindications: [
+      {tag: 'Pregnant', details: 'Warfarin passes through placental barrier and can cause fatal hemorrhage to the the fetus.'},
+      {tag: 'Active bleeding', details: 'Anticoagulant will worsen the bleeding.'},
+      {tag: 'Gastrointestinal ulcer', details: 'Can cause ulcer to bleed.'},
+      {tag: 'Aneurysm', details: 'Will worsen the internal bleeding.'},
+      {tag: 'Anemia', details: 'Will worsen the condition.'}
+    ],
+    doseRange: '0mg-20mg',
+    tags: []
+  },
+  asa: {
+    chemicalName: 'Acetylsalicylic acid',
+    tradeNames: ['Aspirin', 'ASA', 'Acetylsalicylic acid'], 
+    strengths: ['81mg', '325mg'],
+    class: 'NSAID',
+    indications: ['Prevent blood clots', 'Pain'],
+    interactionTags: [
+      {tag: 'Anticoagulant', tagType: 'class', effect: 'Increased risk of bleeding.', severity: '3'},
+      {tag: 'Antiplatelet', tagType: 'class', effect: 'Increased risk of bleeding.', severity: '3'},
+      {tag: 'NSAID', tagType: 'class', effect: 'Increased risk of stomach bleeding. Interferance with ASA platelet binding.', severity: '3'},
+      {tag: 'Methotrexate', tagType: 'chemicalName', effect: 'Contraindicated at MTX dose of 15mg/week or more due to reduced renal clearance of MTX.', severity: '3'},
+      {tag: 'Diuretic', tagType: 'class', effect: 'At high doses of ASA, decreased glomerular filtration.'},
+      {tag: 'SSRI', tagType: 'class', effect: 'Increased risk of stomach bleeding. Use with caution.'}
+    ],
+    crossAllergies: ['NSAID'],
+    contraindications: [
+      {tag: 'Pregnant', details: 'Avoid in 1st and 2nd trimester. Contraindicated in last trimester.'},
+      {tag: 'Active bleeding', details: 'Antiplatelet will worsen the bleeding.'},
+      {tag: 'Gastrointestinal ulcer', details: 'Can cause ulcer to bleed.'},
+      {tag: 'Aneurysm', details: 'Will worsen the internal bleeding.'},
+      {tag: 'Active liver disease', details: ''},
+      {tag: 'Renal failure', details: 'Impaired ASA clearance.'},
+      {tag: 'Congestive heart failure', details: ''},
+      {tag: 'Anemia', details: 'Will worsen the condition.'},
+      {tag: 'age<11', details: "Risk of Reye's Syndrome."},
+      {tag: 'G6PD', details: 'ASA may induce hemolysis or haemolytic anemia.'}
+    ],
+    doseRange: '81mg-650mg',
+    tags: ['Antiplatelet']
   }
 }; 
 
 module.exports = {
   Compendium 
 };
+
+
+/*
+Concomitant administration of clarithromycin with astemizole, cisapride, colchicine,
+pimozide, terfenadine, lovastatin, simvastatin, ergot alkaloids (e.g., ergotamine,
+dihydroergotamine) is contraindicated
+*/
