@@ -935,6 +935,7 @@ const Compendium = {
     indications: ['Infection'],
     interactionTags: [
       ...AllAntibioticInteractions,
+      {tag: 'Clindamycin', tagType: 'chemical', effect: 'Same drug. Duplicate.', severity: '3'},
       {tag: 'Erythromycin', tagType: 'chemical', effect: 'Antibiotics countereact each other.', severity: '3'},
       {tag: 'CYP3A4-inhibitor', tagType: 'tag', effect: 'Increased level of clindamycin.', severity: '2'},
       {tag: 'CYP3A4-inducer', tagType: 'tag', effect: 'Decreased level of clindamycin.', severity: '2'}
@@ -946,6 +947,109 @@ const Compendium = {
     ],
     doseRange: '0mg-1800mg',
     tags: ['CYP3A4-substrate']
+  },
+  metronidazole: {
+    chemicalName: 'Metronidazole',
+    tradeNames: ['Flagyl', 'Metronidazole'], 
+    strengths: ['250mg', '500mg'],
+    class: 'Metronidazole',
+    indications: ['Infection', 'Parasites'],
+    interactionTags: [
+      ...AllAntibioticInteractions,
+      {tag: 'Metronidazole', tagType: 'chemical', effect: 'Duplicate.', severity: '3'},
+      {tag: 'Busulfan', tagType: 'chemical', effect: 'Increased level of busulfan.', severity: '3'},
+      {tag: 'Disulfiram', tagType: 'chemical', effect: 'Acute psychoses and confusion.', severity: '3'},
+      {tag: '5-Fluorouracil', tagType: 'chemical', effect: 'Increased level of 5-Fluorouracil, leading to toxicity.', severity: '3'},
+      {tag: 'Lithium', tagType: 'chemical', effect: 'Decreased lithium clearance -> lithium intoxication, renal damage.', severity: '3'},
+      {tag: 'Warfarin', tagType: 'chemical', effect: 'Increased risk of bleeding. Monitor more frequently.', severity: '2'},
+    ],
+    crossAllergies: ['Metronidazle'],
+    contraindications: [
+      {tag: 'Alcohol', details: 'Avoid alcohol during and at least 1 day after thearpy. Can cause vomiting, flushing, rapid heartbeat.'},
+      {tag: 'Hypothyroidism', details: ''},
+      {tag: 'Blood dyscrasia', details: ''},
+      {tag: 'Hypoadrenalism', details: ''},
+      {tag: 'Neurological disorder', details: 'Some reports of seizures.'},
+      {tag: 'Condoms', details: 'Metronidazole cream can impair integrity of condoms.'},
+      {tag: 'Pregnant', details: 'Passes through placental barrier.'},
+      {tag: 'Breastfeeding', details: 'Gets into breastmilk.'}
+    ],
+    doseRange: '0mg-1800mg',
+    tags: ['Increases INR']
+  },
+  fosfomycin: {
+    chemicalName: 'Fosfomycin',
+    tradeNames: ['Monurol', 'Fosfomycin'], 
+    strengths: ['3g'],
+    class: 'Fosfomycin',
+    indications: ['Bladder infection'],
+    interactionTags: [
+      {tag: 'Fosfomycin', tagType: 'chemical', effect: 'Duplicate.', severity: '3'},
+      {tag: 'Probenecid', tagType: 'chemical', effect: 'Decreases renal clearance of fosfomycin.', severity: '2'},
+      {tag: 'Metoclopramide', tagType: 'chemical', effect: 'Decreases renal clearance of fosfomycin', severity: '2'}
+    ],
+    crossAllergies: ['Fosfomycin'],
+    contraindications: [
+      {tag: 'Food', details: 'Take on empty stomach.'}
+    ],
+    doseRange: '3g',
+    tags: []
+  },
+  nitrofurantoin: {
+    chemicalName: 'Nitrofurantoin',
+    tradeNames: ['Macrobid', 'Nitrofurantoin'], 
+    strengths: ['50mg', '100mg'],
+    class: 'Nitrofurantoin',
+    indications: ['Bladder infection'],
+    interactionTags: [
+      {tag: 'Nitrofurantoin', tagType: 'chemical', effect: 'Duplicate.', severity: '3'},
+      {tag: 'Magnesium', tagType: 'chemical', effect: 'Magnesium trisilicate found in antacids reduces effectiveness of antibiotic.', severity: '3'}
+    ],
+    crossAllergies: ['Nitrofurantoin'],
+    contraindications: [
+      {tag: 'Anuria', details: 'Impaired excretion of drug, making it less effective and more toxic.'},
+      {tag: 'Oliguria', details: 'Impaired excretion of drug, making it less effective and more toxic.'},
+      {tag: 'Poor renal function', details: 'Impaired excretion of drug, making it less effective and more toxic.'},
+      {tag: 'crcl<60', details: 'Impaired excretion of drug, making it less effective and more toxic.'},
+      {tag: 'age==0', details: 'Risk of hemolytic anemia in infants under one month of age.'},
+      {tag: 'Pregnant', details: 'Contraindicated during labour and close to delivery. Risk of hemolytic anemia in newborn.'},
+      {tag: 'G6PD', details: 'Hemolytic anemia.'}
+    ],
+    doseRange: '100mg-400mg',
+    tags: []
+  },
+  trimethoprim: {
+    chemicalName: 'Trimethoprim',
+    tradeNames: ['Proloprim', 'Trimethoprim', 'TMP'], 
+    strengths: ['3g'],
+    class: 'Trimethoprim',
+    indications: ['Infection'],
+    interactionTags: [
+      {tag: 'Trimethoprim', tagType: 'chemical', effect: 'Duplicate.', severity: '3'},
+      {tag: 'Phenytoin', tagType: 'chemical', effect: 'Increased level of phenytoin.', severity: '3'}
+    ],
+    crossAllergies: ['Trimethoprim'],
+    contraindications: [
+      {tag: 'Megaloblastic anemia', details: 'Folate deficiency.'}
+    ],
+    doseRange: '200mg',
+    tags: []
+  },
+  vancomycin: {
+    chemicalName: 'Vancomycin',
+    tradeNames: ['Vancocin', 'Vancomycin'], 
+    strengths: ['125mg', '250mg'],
+    class: 'Vancomycin',
+    indications: ['C.difficile'],
+    interactionTags: [
+      {tag: 'Vancomycin', tagType: 'chemical', effect: 'Duplicate.', severity: '3'}
+    ],
+    crossAllergies: ['Vancomycin'],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '0mg-2000mg',
+    tags: []
   },
   warfarin: {
     chemicalName: 'Warfarin',
@@ -963,6 +1067,7 @@ const Compendium = {
     crossAllergies: ['Warfarin'],
     contraindications: [
       {tag: 'Pregnant', details: 'Warfarin passes through placental barrier and can cause fatal hemorrhage to the the fetus.'},
+      {tag: 'Breastfeeding', details: 'Gets into breastmilk.'},
       {tag: 'Active bleeding', details: 'Anticoagulant will worsen the bleeding.'},
       {tag: 'Gastrointestinal ulcer', details: 'Can cause ulcer to bleed.'},
       {tag: 'Aneurysm', details: 'Will worsen the internal bleeding.'},
@@ -1000,6 +1105,98 @@ const Compendium = {
     ],
     doseRange: '81mg-650mg',
     tags: ['Antiplatelet']
+  },
+  ibuprofen: {
+    chemicalName: 'Ibuprofen',
+    tradeNames: ['Advil', 'Ibuprofen', 'Motrin'], 
+    strengths: ['100mg', '200mg', '400mg', '600mg'],
+    class: 'NSAID',
+    indications: ['Pain', 'Fever'],
+    interactionTags: [
+      {tag: 'Anticoagulant', tagType: 'class', effect: 'Increased risk of bleeding.', severity: '3'},
+      {tag: 'Antiplatelet', tagType: 'class', effect: 'Increased risk of bleeding.', severity: '3'},
+      {tag: 'NSAID', tagType: 'class', effect: 'Same class. Increased risk of stomach bleeding.', severity: '3'},
+      {tag: 'Diuretic', tagType: 'class', effect: 'Affects kidney.'},
+      {tag: 'SSRI', tagType: 'class', effect: 'Increased risk of stomach bleeding. Use with caution.'},
+      {tag: 'ACE-inhibitor', tagType: 'class', effect: 'Reduced effectiveness of antihypertensive.'},
+      {tag: 'ARB', tagType: 'class', effect: 'Reduced effectiveness of antihypertensive.'}
+    ],
+    crossAllergies: ['NSAID'],
+    contraindications: [
+      {tag: 'Pregnant', details: 'Contraindicated in third trimester.'},
+      {tag: 'Active bleeding', details: 'Can worsen the bleeding.'},
+      {tag: 'Gastrointestinal ulcer', details: 'Further irritates ulcer, bleed risk.'},
+      {tag: 'Aneurysm', details: 'Will worsen the internal bleeding.'},
+      {tag: 'Active liver disease', details: ''},
+      {tag: 'Poor renal function', details: 'Worsens kidney function.'},
+      {tag: 'crcl<30', details: 'Worsens kidney function.'},
+      {tag: 'Systemic lupus erythematosus', details: "Anaphylaxis-like reaction with fever may occur."}
+    ],
+    doseRange: '0mg-1600mg',
+    tags: []
+  },
+  naproxen: {
+    chemicalName: 'Naproxen',
+    tradeNames: ['Naprosyn', 'Naproxen', 'Aleve', 'Anaprox', 'Apo-napro-na', 'Maxidol'], 
+    strengths: ['125mg', '220mg', '250mg', '500mg'],
+    class: 'NSAID',
+    indications: ['Pain', 'Fever'],
+    interactionTags: [
+      {tag: 'Anticoagulant', tagType: 'class', effect: 'Increased risk of bleeding.', severity: '3'},
+      {tag: 'Antiplatelet', tagType: 'class', effect: 'Increased risk of bleeding.', severity: '3'},
+      {tag: 'NSAID', tagType: 'class', effect: 'Same class. Increased risk of stomach bleeding.', severity: '3'},
+      {tag: 'Diuretic', tagType: 'class', effect: 'Affects kidney.'},
+      {tag: 'SSRI', tagType: 'class', effect: 'Increased risk of stomach bleeding. Use with caution.'},
+      {tag: 'ACE-inhibitor', tagType: 'class', effect: 'Reduced effectiveness of antihypertensive.'},
+      {tag: 'ARB', tagType: 'class', effect: 'Reduced effectiveness of antihypertensive.'}
+    ],
+    crossAllergies: ['NSAID'],
+    contraindications: [
+      {tag: 'Pregnant', details: 'Contraindicated in third trimester.'},
+      {tag: 'Active bleeding', details: 'Can worsen the bleeding.'},
+      {tag: 'Gastrointestinal ulcer', details: 'Further irritates ulcer, bleed risk.'},
+      {tag: 'Aneurysm', details: 'Will worsen the internal bleeding.'},
+      {tag: 'Active liver disease', details: ''},
+      {tag: 'Poor renal function', details: 'Worsens kidney function.'},
+      {tag: 'crcl<30', details: 'Worsens kidney function.'},
+      {tag: 'Heart failure', details: "Risk of adverse cardiovascular event."}
+    ],
+    doseRange: '220mg-1000mg',
+    tags: []
+  },
+  acetaminophen: {
+    chemicalName: 'Acetaminophen',
+    tradeNames: ['Tylenol', 'Acetaminophen', 'Paracetamol'], 
+    strengths: ['125mg', '250mg', '500mg'],
+    class: 'Acetaminophen',
+    indications: ['Pain', 'Fever'],
+    interactionTags: [
+      {tag: 'Acetaminophen', tagType: 'chemicalName', effect: 'Duplicate.', severity: '3'}
+    ],
+    crossAllergies: ['Acetaminophen'],
+    contraindications: [{tag: 'Alcohol', details: 'Risk of liver toxicity at high doses.'}],
+    doseRange: '0mg-4000mg',
+    tags: ['Increases INR']
+  },
+  diphenhydramine: {
+    chemicalName: 'Diphenhydramine',
+    tradeNames: ['Benadryl', 'Diphenhydramine'], 
+    strengths: ['25mg', '50mg'],
+    class: 'Anti-histamine',
+    indications: ['Allergies', 'Sleep'],
+    interactionTags: [
+      {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'},
+      {tag: 'Sedating', tagType: 'tag', effect: 'Additive sedative effects.', severity: '2'},
+      {tag: 'MAO-ihibitor', tagType: 'class', effect: 'Increased anticholinergic effect of diphenhydramine.', severity: '2'},
+    ],
+    crossAllergies: ['Anti-histamine'],
+    contraindications: [
+      {tag: 'Glaucoma', details: 'Can worsen narrow-angle glaucoma.'},
+      {tag: 'Enlarged prostate', details: 'Can make it more difficult to urinate.'},
+      {tag: 'Breastfeeding', details: 'Gets into breastmilk.'}
+    ],
+    doseRange: '0mg-300mg',
+    tags: ['Sedating']
   }
 }; 
 
