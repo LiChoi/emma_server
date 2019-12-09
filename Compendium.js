@@ -342,7 +342,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: '10mg-80mg',
-    tags: ['CYP3A4-substrate']
+    tags: ['CYP3A4-substrate', 'All']
   },
   lovastatin: {
     chemicalName: 'Lovastatin',
@@ -354,7 +354,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: '20mg-80mg',
-    tags: ['CYP3A4-substrate']
+    tags: ['CYP3A4-substrate', 'All']
   },
   simvastatin: {
     chemicalName: 'Simvastatin',
@@ -366,7 +366,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: "20mg-80mg",
-    tags: ['CYP3A4-substrate']
+    tags: ['CYP3A4-substrate', 'All']
   },
   rosuvastatin: {
     chemicalName: 'Rosuvastatin',
@@ -378,7 +378,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: '5mg-40mg',
-    tags: []
+    tags: ['All']
   },
   pravastatin: {
     chemicalName: 'Pravastatin',
@@ -390,7 +390,7 @@ const Compendium = {
     crossAllergies: [...StatinCrossAllergies],
     contraindications: [...StatinContraindications],
     doseRange: '20mg-80mg',
-    tags: []
+    tags: ['All']
   },
   fenofibrateSupra: {
     chemicalName: 'Fenofibrate',
@@ -402,7 +402,7 @@ const Compendium = {
     crossAllergies: [...FibrateAllergies],
     contraindications: [...FibrateCIs],
     doseRange: '100mg-200mg',
-    tags: []
+    tags: ['All']
   },
   fenofibrateEZ: {
     chemicalName: 'Fenofibrate EZ',
@@ -414,7 +414,7 @@ const Compendium = {
     crossAllergies: [...FibrateAllergies],
     contraindications: [...FibrateCIs],
     doseRange: '48mg-145mg',
-    tags: []
+    tags: ['All']
   },
   gemfibrozil: {
     chemicalName: 'Gemfibrozil',
@@ -426,7 +426,7 @@ const Compendium = {
     crossAllergies: [...FibrateAllergies],
     contraindications: [...FibrateCIs],
     doseRange: '1200mg-1500mg',
-    tags: []
+    tags: ['All']
   },
   ezetimibe : {
     chemicalName: 'Ezetimibe',
@@ -438,7 +438,7 @@ const Compendium = {
     crossAllergies: ['Ezetimibe'],
     contraindications: [{tag: 'Active liver disease', details: 'Contraindicated in combination with statin and active liver disease.'}],
     doseRange: '10mg',
-    tags: []
+    tags: ['All']
   },
   cholestyramine: {
     chemicalName: 'Cholestyramine',
@@ -450,7 +450,7 @@ const Compendium = {
     crossAllergies: ['Cholestyramine'],
     contraindications: [{tag: 'Biliary obstruction', details: 'It will worsen condition.'}],
     doseRange: '4g-24g',
-    tags: []
+    tags: ['All']
   },
   nicotinicAcid: {
     chemicalName: 'Nicotinic acid',
@@ -462,7 +462,7 @@ const Compendium = {
     crossAllergies: ['Nicotinic acid'],
     contraindications: [{tag: 'Peptic ulcer disease', details: 'It will worsen the condition.'},{tag: 'Chronic liver disease', details: 'It will worsen the condition.'},{tag: 'Gout', details: 'It will worsen the condition.'}],
     doseRange: '500mg-2000mg',
-    tags: []
+    tags: ['All']
   },
   oralContraceptive: {
     chemicalName: "Ethinyl-estradiol/progesterone-analogue",
@@ -474,7 +474,7 @@ const Compendium = {
     crossAllergies: ['Ethinyl estradiol', 'Oral contraceptive', 'Norethindrone', 'Ethynodiol diacetate', 'Levonorgestrel', 'Norgestrel'],
     contraindications: [...EstrogenOCContraindications],
     doseRange: '1tab',
-    tags: []
+    tags: ['All']
   },
   amoxicillin: {
     chemicalName: 'Amoxicillin',
@@ -489,7 +489,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [...AmoxicillinCIs],
     doseRange: '0mg-3000mg',
-    tags: []
+    tags: ['All']
   },
   amoxiClav: {
     chemicalName: 'Amoxicillin/clavulanate',
@@ -519,7 +519,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-3000mg',
-    tags: []
+    tags: ['All']
   },
   cloxacillin: {
     chemicalName: 'Cloxacillin',
@@ -533,7 +533,7 @@ const Compendium = {
       {tag: 'Food', details: 'Take on empty stomach.'}
     ],
     doseRange: '0mg-4000mg',
-    tags: []
+    tags: ['All']
   },
   ampicillin: {
     chemicalName: 'Ampicillin',
@@ -553,7 +553,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-2000mg',
-    tags: []
+    tags: ['All']
   },
   cephalexin: {
     chemicalName: 'Cephalexin',
@@ -565,7 +565,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-4000mg',
-    tags: ['Cephalosporin']
+    tags: ['Cephalosporin', 'All']
   },
   cefprozil: {
     chemicalName: 'Cefprozil',
@@ -592,7 +592,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-1000mg',
-    tags: ['Cephalosporin']
+    tags: ['Cephalosporin', 'All']
   },
   cefixime: {
     chemicalName: 'Cefixime',
@@ -604,7 +604,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-400mg',
-    tags: ['Cephalosporin']
+    tags: ['Cephalosporin', 'All']
   },
   cefuroxime: {
     chemicalName: 'Cefuroxime',
@@ -631,7 +631,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-1000mg',
-    tags: ['Cephalosporin']
+    tags: ['Cephalosporin', 'All']
   },
   cefaclor: {
     chemicalName: 'Cefaclor',
@@ -643,7 +643,7 @@ const Compendium = {
     crossAllergies: ['Beta-lactam'],
     contraindications: [],
     doseRange: '0mg-2000mg',
-    tags: ['Cephalosporin']
+    tags: ['Cephalosporin', 'All']
   },
   ciprofloxacin: {
     chemicalName: 'Ciprofloxacin',
@@ -678,7 +678,7 @@ const Compendium = {
       ...FluoroquinoloneCIs
     ],
     doseRange: '0mg-1500mg',
-    tags: []
+    tags: ['Cation-chelation', 'All']
   },
   levofloxacin: {
     chemicalName: 'Levofloxacin',
@@ -701,7 +701,7 @@ const Compendium = {
       ...FluoroquinoloneCIs
     ],
     doseRange: '250mg-750mg',
-    tags: ['QT-prolongation']
+    tags: ['QT-prolongation', 'Cation-chelation', 'All']
   },
   moxifloxacin: {
     chemicalName: 'Moxifloxacin',
@@ -724,7 +724,7 @@ const Compendium = {
       ...FluoroquinoloneCIs
     ],
     doseRange: '400mg',
-    tags: ['QT-prolongation']
+    tags: ['QT-prolongation', 'Cation-chelation', 'All']
   },
   norfloxacin: {
     chemicalName: 'Norfloxacin',
@@ -739,7 +739,7 @@ const Compendium = {
     crossAllergies: ['Fluoroquinolones'],
     contraindications: [...FluoroquinoloneCIs],
     doseRange: '400mg-800mg',
-    tags: []
+    tags: ['Cation-chelation', 'All']
   },
   azithromycin: {
     chemicalName: 'Azithromycin',
@@ -754,7 +754,7 @@ const Compendium = {
       {tag: 'Biliary obstruction', details: 'Impaired elimination of drug.'}
     ],
     doseRange: '0mg-2000mg',
-    tags: []
+    tags: ['All']
   },
   clarithromycin: {
     chemicalName: 'Clarithromycin',
@@ -789,7 +789,7 @@ const Compendium = {
       {tag: 'Pregnant', details: 'Should not be taken during pregnancy, particularly during the first trimester.'}
     ],
     doseRange: '0mg-1000mg',
-    tags: ['QT-prolongation', 'CYP3A4-inhibitor', 'Pgp-inhibitor', 'Increases INR']
+    tags: ['QT-prolongation', 'CYP3A4-inhibitor', 'Pgp-inhibitor', 'Increases INR', 'All']
   },
   erythromycin: {
     chemicalName: 'Erythromycin',
@@ -809,7 +809,7 @@ const Compendium = {
     crossAllergies: ['Macrolide'],
     contraindications: [],
     doseRange: '0mg-2000mg',
-    tags: ['QT-prolongation', 'CYP3A4-inhibitor', 'Increases INR']
+    tags: ['QT-prolongation', 'CYP3A4-inhibitor', 'Increases INR', 'All']
   },
   septra: {
     chemicalName: 'Sulfamethoxazole/Trimethoprim',
@@ -838,7 +838,7 @@ const Compendium = {
       {tag: 'G6PD', details: ''}
     ],
     doseRange: '0mg-320mg',
-    tags: ['Trimethoprim', 'Sulfamethoxazole', 'Increases INR', 'Increases K+', 'CYP2C9-inhibitor', 'CYP2C8-inhibitor']
+    tags: ['Trimethoprim', 'Sulfamethoxazole', 'Increases INR', 'Increases K+', 'CYP2C9-inhibitor', 'CYP2C8-inhibitor', 'All']
   },
   doxycycline: {
     chemicalName: 'Doxycycline',
@@ -867,7 +867,7 @@ const Compendium = {
       {tag: 'Alcohol', details: 'Reduced effect of antibiotic.'},
     ],
     doseRange: '100mg-200mg',
-    tags: ['Increases INR']
+    tags: ['Increases INR', 'Cation-chelation', 'All']
   },
   minocycline: {
     chemicalName: 'Minocycline',
@@ -894,7 +894,7 @@ const Compendium = {
       {tag: 'Alcohol', details: 'Liver toxicity.'},
     ],
     doseRange: '50mg-200mg',
-    tags: ['Increases INR']
+    tags: ['Increases INR', 'Cation-chelation', 'All']
   },
   tetracycline: {
     chemicalName: 'Tetracycline',
@@ -925,7 +925,7 @@ const Compendium = {
       {tag: 'Food', details: 'Take on empty stomach.'}
     ],
     doseRange: '250mg-2000mg',
-    tags: ['Increases INR']
+    tags: ['Increases INR', 'Cation-chelation', 'All']
   },
   clindamycin: {
     chemicalName: 'Clindamycin',
@@ -993,7 +993,7 @@ const Compendium = {
       {tag: 'Food', details: 'Take on empty stomach.'}
     ],
     doseRange: '3g',
-    tags: []
+    tags: ['All']
   },
   nitrofurantoin: {
     chemicalName: 'Nitrofurantoin',
@@ -1049,7 +1049,23 @@ const Compendium = {
       {tag: '', details: ''}
     ],
     doseRange: '0mg-2000mg',
-    tags: []
+    tags: ['All']
+  },
+  levothyroxine: {
+    chemicalName: 'Levothyroxine',
+    tradeNames: ['Levothyroxine', 'Synthroid', 'Eltroxin'],
+    strengths: ['0.125mg', '0.2mg', '0.5mg', '0.075mg', '0.1mg'],
+    class: 'Levothyroxine',
+    indications: ['Hypothyroidism'],
+    interactionTags: [
+      {tag: 'Cation', tagType: 'tag', effect: 'Binds to metal cations, reduced absorption. Space them out.', severity: '3'}
+    ],
+    crossAllergies: ['Levothyroxine'],
+    contraindications: [
+      {tag: 'Hyperthyroidism', details: 'Further increases thyroid levels.'}
+    ],
+    doseRange: '',
+    tags: ['Cation-chelation', 'All']
   },
   warfarin: {
     chemicalName: 'Warfarin',
@@ -1197,7 +1213,87 @@ const Compendium = {
     ],
     doseRange: '0mg-300mg',
     tags: ['Sedating']
+  },
+  calcium: {
+    chemicalName: 'Calcium',
+    tradeNames: ['Calcium'],
+    strengths: ['500'],
+    class: 'Calcium',
+    indications: ['Bones'],
+    interactionTags: [
+      {tag: 'Cation-chelation', tagType: 'tag', effect: 'Binds to drug, reducing absorption. Space them out.', severity: '2'}
+    ],
+    crossAllergies: [],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '',
+    tags: ['Cation']
+  },
+  magnesium: {
+    chemicalName: 'Magnesium',
+    tradeNames: ['Magnesium'],
+    strengths: ['500'],
+    class: 'Magnesium',
+    indications: [''],
+    interactionTags: [
+      {tag: 'Cation-chelation', tagType: 'tag', effect: 'Binds to drug, reducing absorption. Space them out.', severity: '2'}
+    ],
+    crossAllergies: [],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '',
+    tags: ['Cation']
+  },
+  iron: {
+    chemicalName: 'Iron',
+    tradeNames: ['Iron', 'Ferrous sulfate', 'Ferrous gluconate', 'Ferrous fumerate', 'Ferramax', 'Triferrix', 'Euro-fer'],
+    strengths: ['300mg'],
+    class: 'Iron',
+    indications: ['Low iron level'],
+    interactionTags: [
+      {tag: 'Cation-chelation', tagType: 'tag', effect: 'Binds to drug, reducing absorption. Space them out.', severity: '2'}
+    ],
+    crossAllergies: [],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '',
+    tags: ['Cation']
+  },
+  antacids: {
+    chemicalName: 'Antacid',
+    tradeNames: ['Tums', 'Alka-seltzer', 'Maalox', 'Mylanta', 'Rolaids', 'Antacid', 'Milk of magnesia', 'Gaviscon', 'Gelusil', 'Pepto-bismol', 'Sucralfate'],
+    strengths: ['500'],
+    class: 'Antacid',
+    indications: ['Heartburn'],
+    interactionTags: [
+      {tag: 'Cation-chelation', tagType: 'tag', effect: 'Binds to drug, reducing absorption. Space them out.', severity: '2'}
+    ],
+    crossAllergies: [],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '',
+    tags: ['Cation']
   }
+  /*dummy: {
+    chemicalName: '',
+    tradeNames: [],
+    strengths: [],
+    class: '',
+    indications: [],
+    interactionTags: [
+      {tag: '', tagType: '', effect: '', severity: ''}
+    ],
+    crossAllergies: [],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '',
+    tags: []
+  }*/
 }; 
 
 module.exports = {
