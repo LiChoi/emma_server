@@ -1198,7 +1198,7 @@ const Compendium = {
     chemicalName: 'Diphenhydramine',
     tradeNames: ['Benadryl', 'Diphenhydramine'], 
     strengths: ['25mg', '50mg'],
-    class: 'Anti-histamine',
+    class: '1st Gen Anti-histamine',
     indications: ['Allergies', 'Sleep'],
     interactionTags: [
       {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'},
@@ -1213,6 +1213,120 @@ const Compendium = {
     ],
     doseRange: '0mg-300mg',
     tags: ['Sedating']
+  },
+  cetirizine: {
+    chemicalName: 'Cetirizine',
+    tradeNames: ['Reactine', 'Cetirizine'], 
+    strengths: ['5mg', '10mg', '20mg'],
+    class: '2nd Gen Anti-histamine',
+    indications: ['Allergies'],
+    interactionTags: [
+      {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'}
+    ],
+    crossAllergies: ['Anti-histamine'],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '0mg-20mg',
+    tags: []
+  },
+  loratadine: {
+    chemicalName: 'Loratadine',
+    tradeNames: ['Claritin', 'Loratadine'], 
+    strengths: ['10mg'],
+    class: '2nd Gen Anti-histamine',
+    indications: ['Allergies'],
+    interactionTags: [
+      {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'}
+    ],
+    crossAllergies: ['Anti-histamine'],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '0mg-10mg',
+    tags: []
+  },
+  desloratadine: {
+    chemicalName: 'Desloratadine',
+    tradeNames: ['Aerius', 'Desloratadine'], 
+    strengths: ['5mg', '10mg'],
+    class: '2nd Gen Anti-histamine',
+    indications: ['Allergies'],
+    interactionTags: [
+      {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'}
+    ],
+    crossAllergies: ['Anti-histamine'],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '0mg-10mg',
+    tags: []
+  },
+  fexofenadine: {
+    chemicalName: 'Fexofenadine',
+    tradeNames: ['Allegra', 'Fexofenadine'], 
+    strengths: ['5mg', '10mg'],
+    class: '2nd Gen Anti-histamine',
+    indications: ['Allergies'],
+    interactionTags: [
+      {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'}
+    ],
+    crossAllergies: ['Anti-histamine'],
+    contraindications: [
+      {tag: '', details: ''}
+    ],
+    doseRange: '0mg-10mg',
+    tags: []
+  },
+  pseudoephedrine: {
+    chemicalName: 'Pseudoephedrine',
+    tradeNames: ['Sudafed', 'Sinutab', 'Eltor', 'Pseudoephedrine', 'Phenylephrine'], //Phenylephrine is not the same as pseudoephedrine, but it does the same thing and has same properties
+    strengths: ['30mg'],
+    class: 'Decongestant',
+    indications: ['Decongestant'],
+    interactionTags: [
+      {tag: 'Decongestant', tagType: 'class', effect: 'Duplicate.', severity: '3'},
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Pseudoephedrine is contraindicated in patients receiving or having received MAO inhibitors in the preceding three weeks.', severity: '3'},
+      {tag: 'Beta-blocker', tagType: 'class', effect: 'Counteracts antihypertensive effect of beta-blocker.', severity: '2'}
+    ],
+    crossAllergies: ['Decongestant', 'Pseudoephedrine'],
+    contraindications: [
+      {tag: 'Glaucoma', details: 'Can worsen condition.'},
+      {tag: 'Coronary artery disease', details: 'Further strains the heart.'},
+      {tag: 'Congestive heart failure', details: 'Further strains the heart.'},
+      {tag: 'Enlarged prostate', details: 'Makes it more difficult to urinate.'},
+      {tag: 'Urinary retention', details: 'Makes it more difficult to urinate.'},
+      {tag: 'Hyperthyroidism', details: 'Worsens symptoms.'},
+      {tag: 'age<6', details: 'Not indicated in this age group.'}
+    ],
+    doseRange: '30mg-100mg',
+    tags: []
+  },
+  antihistamineDecongestantCombos: {
+    chemicalName: 'anti-histamine and decongestant combos',
+    tradeNames: ['Claritin-D', 'Reactine-Complete', 'Allegra-D', 'Aerius Dual Action'],
+    strengths: ['various'],
+    class: 'Antihistamine/decongestant',
+    indications: ['Allergies'],
+    interactionTags: [
+      {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate.', severity: '3'},
+      {tag: 'Decongestant', tagType: 'class', effect: 'Duplicate.', severity: '3'},
+      {tag: 'Antihistamine/decongestant', tagType: 'class', effect: 'Duplicate.', severity: '3'},
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Pseudoephedrine is contraindicated in patients receiving or having received MAO inhibitors in the preceding three weeks.', severity: '3'},
+      {tag: 'Beta-blocker', tagType: 'class', effect: 'Counteracts antihypertensive effect of beta-blocker.', severity: '2'}
+    ],
+    crossAllergies: ['Anti-histamine', 'Decongestant'],
+    contraindications: [
+      {tag: 'Glaucoma', details: 'Can worsen condition.'},
+      {tag: 'Coronary artery disease', details: 'Further strains the heart.'},
+      {tag: 'Congestive heart failure', details: 'Further strains the heart.'},
+      {tag: 'Enlarged prostate', details: 'Makes it more difficult to urinate.'},
+      {tag: 'Urinary retention', details: 'Makes it more difficult to urinate.'},
+      {tag: 'Hyperthyroidism', details: 'Worsens symptoms.'},
+      {tag: 'age<6', details: 'Not indicated in this age group.'}
+    ],
+    doseRange: '',
+    tags: ['Anti-histamine', 'Decongestant']
   },
   calcium: {
     chemicalName: 'Calcium',
