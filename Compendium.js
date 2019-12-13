@@ -1304,7 +1304,7 @@ const Compendium = {
   },
   antihistamineDecongestantCombos: {
     chemicalName: 'anti-histamine and decongestant combos',
-    tradeNames: ['Claritin-D', 'Reactine-Complete', 'Allegra-D', 'Aerius Dual Action'],
+    tradeNames: ['Claritin-D', 'Reactine-Complete', 'Allegra-D', 'Aerius Dual Action', 'Dimetapp'],
     strengths: ['various'],
     class: 'Antihistamine/decongestant',
     indications: ['Allergies'],
@@ -1327,6 +1327,85 @@ const Compendium = {
     ],
     doseRange: '',
     tags: ['Anti-histamine', 'Decongestant']
+  },
+  dextromethorphan: {
+    chemicalName: 'Dextromethorphan',
+    tradeNames: ['Dextromethorphan', 'DM', 'Robitussin Cough Control', 'Koffex', 'Benylin DM', 'Benylin Dry Cough'],
+    strengths: ['3mg/ml'],
+    class: 'Antitussive',
+    indications: ['Cough'],
+    interactionTags: [
+      {tag: 'Dextromethorphan', tagType: 'chemicalName', effect: 'Duplicate.', severity: '1'},
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Risk of serotonin syndrome during or within 14 days after stopping MAO-inhibitor.', severity: '2'}
+    ],
+    crossAllergies: ['Opioid', 'Dextromethorphan'],
+    contraindications: [{tag: 'age<6', details: 'Not indicated in this age group.'}],
+    doseRange: '',
+    tags: []
+  },
+  coughAndColdCombosWithDecongestant: {
+    chemicalName: 'c&c&decongestant',
+    tradeNames: ['Dimetapp-DM', 'Tylenol Complete', 'Neocitran', 'Robitussin Cough Control', 'Robitussin Complete Daytime', 'Benylin All-In-One', 'Life Brand Total Cold and Flu Extra Strength'],
+    strengths: ['3mg/ml'],
+    class: 'c&c&decongestant',
+    indications: ['Cough and cold'],
+    interactionTags: [
+      {tag: 'Dextromethorphan', tagType: 'chemicalName', effect: 'Duplicate.', severity: '1'},
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Risk of serotonin syndrome during or within 14 days after stopping MAO-inhibitor.', severity: '2'},
+      {tag: 'Decongestant', tagType: 'class', effect: 'Duplicate.', severity: '3'},
+      {tag: 'Beta-blocker', tagType: 'class', effect: 'Decongestant counteracts antihypertensive effect of beta-blocker.', severity: '2'}
+    ],
+    crossAllergies: ['Opioid', 'Dextromethorphan','Decongestant', 'Pseudoephedrine'],
+    contraindications: [
+      {tag: 'Glaucoma', details: 'Can worsen condition.'},
+      {tag: 'Coronary artery disease', details: 'Further strains the heart.'},
+      {tag: 'Congestive heart failure', details: 'Further strains the heart.'},
+      {tag: 'Enlarged prostate', details: 'Makes it more difficult to urinate.'},
+      {tag: 'Urinary retention', details: 'Makes it more difficult to urinate.'},
+      {tag: 'Hyperthyroidism', details: 'Worsens symptoms.'},
+      {tag: 'age<6', details: 'Not indicated in this age group.'}
+    ],
+    doseRange: 'varies',
+    tags: ['Dextromethorphan', 'Decongestant', 'Antitussive', 'Pseudoephedrine', 'Opioid']
+  },
+  advilCoughAndColdWithDecongestant: {
+    chemicalName: 'advilCoughAndColdWithDecongestant',
+    tradeNames: ['Advil Cold & Sinus'],
+    strengths: ['3mg/ml'],
+    class: 'advilCoughAndColdWithDecongestant',
+    indications: ['Cough and cold'],
+    interactionTags: [
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Risk of serotonin syndrome during or within 14 days after stopping MAO-inhibitor.', severity: '2'},
+      {tag: 'Decongestant', tagType: 'class', effect: 'Duplicate.', severity: '3'},
+      {tag: 'Beta-blocker', tagType: 'class', effect: 'Decongestant counteracts antihypertensive effect of beta-blocker.', severity: '2'},
+      {tag: 'Anticoagulant', tagType: 'class', effect: 'Increased risk of bleeding.', severity: '3'},
+      {tag: 'Antiplatelet', tagType: 'class', effect: 'Increased risk of bleeding.', severity: '3'},
+      {tag: 'NSAID', tagType: 'class', effect: 'Same class. Increased risk of stomach bleeding.', severity: '3'},
+      {tag: 'Diuretic', tagType: 'class', effect: 'Affects kidney.'},
+      {tag: 'SSRI', tagType: 'class', effect: 'Increased risk of stomach bleeding. Use with caution.'},
+      {tag: 'ACE-inhibitor', tagType: 'class', effect: 'Reduced effectiveness of antihypertensive.'},
+      {tag: 'ARB', tagType: 'class', effect: 'Reduced effectiveness of antihypertensive.'}
+    ],
+    crossAllergies: ['Decongestant', 'Pseudoephedrine', 'NSAID'],
+    contraindications: [
+      {tag: 'Glaucoma', details: 'Can worsen condition.'},
+      {tag: 'Coronary artery disease', details: 'Further strains the heart.'},
+      {tag: 'Congestive heart failure', details: 'Further strains the heart.'},
+      {tag: 'Enlarged prostate', details: 'Makes it more difficult to urinate.'},
+      {tag: 'Urinary retention', details: 'Makes it more difficult to urinate.'},
+      {tag: 'Hyperthyroidism', details: 'Worsens symptoms.'},
+      {tag: 'age<6', details: 'Not indicated in this age group.'},
+      {tag: 'Pregnant', details: 'Contraindicated in third trimester.'},
+      {tag: 'Active bleeding', details: 'Can worsen the bleeding.'},
+      {tag: 'Gastrointestinal ulcer', details: 'Further irritates ulcer, bleed risk.'},
+      {tag: 'Aneurysm', details: 'Will worsen the internal bleeding.'},
+      {tag: 'Active liver disease', details: ''},
+      {tag: 'Poor renal function', details: 'Worsens kidney function.'},
+      {tag: 'crcl<30', details: 'Worsens kidney function.'},
+      {tag: 'Systemic lupus erythematosus', details: "Anaphylaxis-like reaction with fever may occur."}
+    ],
+    doseRange: 'varies',
+    tags: ['Decongestant', 'Antitussive', 'Pseudoephedrine', 'NSAID']
   },
   calcium: {
     chemicalName: 'Calcium',
