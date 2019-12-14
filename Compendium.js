@@ -217,7 +217,7 @@ should not smoke.
 /*****************************************************************************Antibiotics*************************************************************************/
 const AllAntibioticInteractions = [
   {
-    tag: 'Oral Contraceptive', 
+    tag: 'Oral contraceptive', 
     tagType: 'class', 
     effect: 'Antibiotics may affect the gut flora, leading to lower estrogen reabsorption and reduced efficacy of combined oral estrogen/progesterone contraceptives.', 
     severity: '0'
@@ -673,7 +673,7 @@ const Compendium = {
         severity: '2'
       }
     ],
-    crossAllergies: ['Fluoroquinolones'],
+    crossAllergies: ['Fluoroquinolone'],
     contraindications: [
       ...FluoroquinoloneCIs
     ],
@@ -696,7 +696,7 @@ const Compendium = {
         severity: '2'
       }
     ],
-    crossAllergies: ['Fluoroquinolones'],
+    crossAllergies: ['Fluoroquinolone'],
     contraindications: [
       ...FluoroquinoloneCIs
     ],
@@ -719,7 +719,7 @@ const Compendium = {
         severity: '2'
       }
     ],
-    crossAllergies: ['Fluoroquinolones'],
+    crossAllergies: ['Fluoroquinolone'],
     contraindications: [
       ...FluoroquinoloneCIs
     ],
@@ -966,6 +966,7 @@ const Compendium = {
     crossAllergies: ['Metronidazle'],
     contraindications: [
       {tag: 'Alcohol', details: 'Avoid alcohol during and at least 1 day after thearpy. Can cause vomiting, flushing, rapid heartbeat.'},
+      {tag: 'High alcohol intake', details: 'Avoid alcohol during and at least 1 day after thearpy. Can cause vomiting, flushing, rapid heartbeat.'},
       {tag: 'Hypothyroidism', details: ''},
       {tag: 'Blood dyscrasia', details: ''},
       {tag: 'Hypoadrenalism', details: ''},
@@ -1196,9 +1197,9 @@ const Compendium = {
   },
   diphenhydramine: {
     chemicalName: 'Diphenhydramine',
-    tradeNames: ['Benadryl', 'Diphenhydramine'], 
+    tradeNames: ['Benadryl', 'Diphenhydramine', 'Pheniramine'],  //Pheniramine is not diphenhydramine, just putting it here because has similar info 
     strengths: ['25mg', '50mg'],
-    class: '1st Gen Anti-histamine',
+    class: 'Anti-histamine',
     indications: ['Allergies', 'Sleep'],
     interactionTags: [
       {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'},
@@ -1212,13 +1213,43 @@ const Compendium = {
       {tag: 'Breastfeeding', details: 'Gets into breastmilk.'}
     ],
     doseRange: '0mg-300mg',
-    tags: ['Sedating']
+    tags: ['Sedating', '1st Gen Anti-histamine']
+  },
+  hydroxyzine: {
+    chemicalName: 'Hydroxyzine',
+    tradeNames: ['Atarax', 'hydroxyzine'],
+    strengths: ['25mg', '50mg'],
+    class: 'Anti-histamine',
+    indications: ['Allergies'],
+    interactionTags: [
+      {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'},
+      {tag: 'Sedating', tagType: 'tag', effect: 'Additive sedative effects.', severity: '2'},
+      {tag: 'MAO-ihibitor', tagType: 'class', effect: 'Increased anticholinergic effect of diphenhydramine.', severity: '2'},
+      {tag: 'QT-prolongation', tagType: 'tag', effect: 'Risk of arrythmia.', severity: '3'},
+      {tag: 'CYP3A4-inhibitor', tagType: 'tag', effect: 'Risk of drug accumulation.', severity: '2'},
+      {tag: 'CYP3A5-inhibitor', tagType: 'tag', effect: 'Risk of drug accumulation.', severity: '2'}
+    ],
+    crossAllergies: ['Anti-histamine'],
+    contraindications: [
+      {tag: 'Glaucoma', details: 'Can worsen narrow-angle glaucoma.'},
+      {tag: 'Enlarged prostate', details: 'Can make it more difficult to urinate.'},
+      {tag: 'Pregnant', details: 'Contraindicated in first trimester.'},
+      {tag: 'Breastfeeding', details: ''},
+      {tag: 'Porphyria', details: ''},
+      {tag: 'Long QT syndrome', details: 'Risk of arrythmia.'},
+      {tag: 'Cardiac arrythmia', details: 'Risk of arrythmia.'},
+      {tag: 'Hypokalemia', details: 'Risk of arrythmia.'},
+      {tag: 'Hypomagnesemia', details: 'Risk of arrythmia.'},
+      {tag: 'Bradycardia', details: 'Risk of arrythmia.'},
+    ],
+    doseRange: '0mg-300mg',
+    tags: ['Sedating', '1st Gen Anti-histamine', 'QT-prolongation', 'CYP3A5-substrate', 'CYP3A4-substrate']
   },
   cetirizine: {
     chemicalName: 'Cetirizine',
     tradeNames: ['Reactine', 'Cetirizine'], 
     strengths: ['5mg', '10mg', '20mg'],
-    class: '2nd Gen Anti-histamine',
+    class: 'Anti-histamine',
     indications: ['Allergies'],
     interactionTags: [
       {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'}
@@ -1228,13 +1259,13 @@ const Compendium = {
       {tag: '', details: ''}
     ],
     doseRange: '0mg-20mg',
-    tags: []
+    tags: ['2nd Gen Anti-histamine']
   },
   loratadine: {
     chemicalName: 'Loratadine',
     tradeNames: ['Claritin', 'Loratadine'], 
     strengths: ['10mg'],
-    class: '2nd Gen Anti-histamine',
+    class: 'Anti-histamine',
     indications: ['Allergies'],
     interactionTags: [
       {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'}
@@ -1244,13 +1275,13 @@ const Compendium = {
       {tag: '', details: ''}
     ],
     doseRange: '0mg-10mg',
-    tags: []
+    tags: ['2nd Gen Anti-histamine']
   },
   desloratadine: {
     chemicalName: 'Desloratadine',
     tradeNames: ['Aerius', 'Desloratadine'], 
     strengths: ['5mg', '10mg'],
-    class: '2nd Gen Anti-histamine',
+    class: 'Anti-histamine',
     indications: ['Allergies'],
     interactionTags: [
       {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'}
@@ -1260,13 +1291,13 @@ const Compendium = {
       {tag: '', details: ''}
     ],
     doseRange: '0mg-10mg',
-    tags: []
+    tags: ['2nd Gen Anti-histamine']
   },
   fexofenadine: {
     chemicalName: 'Fexofenadine',
     tradeNames: ['Allegra', 'Fexofenadine'], 
     strengths: ['5mg', '10mg'],
-    class: '2nd Gen Anti-histamine',
+    class: 'Anti-histamine',
     indications: ['Allergies'],
     interactionTags: [
       {tag: 'Anti-histamine', tagType: 'class', effect: 'Duplicate therapy.', severity: '3'}
@@ -1276,7 +1307,7 @@ const Compendium = {
       {tag: '', details: ''}
     ],
     doseRange: '0mg-10mg',
-    tags: []
+    tags: ['2nd Gen Anti-histamine']
   },
   pseudoephedrine: {
     chemicalName: 'Pseudoephedrine',
@@ -1355,7 +1386,7 @@ const Compendium = {
       {tag: 'Decongestant', tagType: 'class', effect: 'Duplicate.', severity: '3'},
       {tag: 'Beta-blocker', tagType: 'class', effect: 'Decongestant counteracts antihypertensive effect of beta-blocker.', severity: '2'}
     ],
-    crossAllergies: ['Opioid', 'Dextromethorphan','Decongestant', 'Pseudoephedrine'],
+    crossAllergies: ['Opioid', 'Dextromethorphan','Decongestant', 'Pseudoephedrine', 'Acetaminophen'],
     contraindications: [
       {tag: 'Glaucoma', details: 'Can worsen condition.'},
       {tag: 'Coronary artery disease', details: 'Further strains the heart.'},
@@ -1478,7 +1509,6 @@ const Compendium = {
     class: 'Bismuth-subsalicylate',
     indications: ['Heartburn'],
     interactionTags: [
-      {tag: '', tagType: '', effect: '', severity: ''},
       {tag: 'Cation-chelation', tagType: 'tag', effect: 'Binds to drug, reducing absorption. Space them out.', severity: '2'}
     ],
     crossAllergies: ['Bisthmuth-subsalicylate', 'Acetylsalicylic acid'],
@@ -1486,12 +1516,81 @@ const Compendium = {
       {tag: 'Renal failure', details: 'Avoid use.'},
       {tag: 'Hepatic insufficiency', details: 'Avoid use.'},
       {tag: 'Gastrointestinal ulcer', details: 'Avoid use.'},
-      {tag: 'age<13', details: "Risk of Reye's Syndrome, especially if have chicken-pox or flu-like symptoms."},
+      {tag: 'age<11', details: "Risk of Reye's Syndrome, especially if have chicken-pox or flu-like symptoms."},
       {tag: 'Pregnant', details: 'Avoid use.'}
     ],
     doseRange: '1tab',
     tags: ['Cation']
-  }
+  },
+  grapefruit: {
+    chemicalName: 'Grapefruit',
+    tradeNames: ['Grapefruit', 'Grapefruit juice', 'Grape fruit juice', 'Grape fruit'],
+    strengths: ["Grapefruit unit"],
+    class: 'Grapefruit',
+    indications: ['Nutrition'],
+    interactionTags: [
+      {tag: 'CYP3A4-substrate', tagType: 'tag', effect: 'Increased level of drug.', severity: '2'}
+    ],
+    crossAllergies: ['Grapefruit', 'Citrus'],
+    contraindications: [
+      {tag: 'Hates grapefruit', details: "They're disgusting"}
+    ],
+    doseRange: '1grapefruit',
+    tags: ['CYP3A4-inhibitor']
+  },
+  codeine: {
+    chemicalName: 'Codeine',
+    tradeNames: ['Codeine', 'Codeine contin'],
+    strengths: ['15mg'],
+    class: 'Opioid',
+    indications: ['Pain'],
+    interactionTags: [
+      {tag: 'Opioid', tagType: 'class', effect: 'Same class. Potential duplicate therapy. Overdose can lead to respiratory depression.', severity: '2'},
+      {tag: 'Sedating', tagType: 'tag', effect: 'Additive sedative effect.', severity: '2'},
+      {tag: 'Respiratory depression', tagType: 'tag', effect: 'Increased resipiratory depression.', severity: '2'},
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Intensifies effect of opioid. Contraindicated while on or 14 days after MAO-inhibitor therapy.', severity: ''},
+      {tag: 'CYP2D6-inhibitor', tagType: 'tag', effect: 'Reduced effectiveness of codeine.', severity: '1'},
+      {tag: 'CYP2D6-inducer', tagType: 'tag', effect: 'Increased risk of codeine overdose.', severity: '2'}
+    ],
+    crossAllergies: ['Opioid'],
+    contraindications: [
+      {tag: 'Gastrointestinal obstruction', details: 'Will worsen condition.'},
+      {tag: 'High alcohol intake', details: 'Sedation, respiratory depression.'},
+      {tag: 'Alcohol', details: 'Sedation, respiratory depression.'},
+      {tag: 'Pregnant', details: ''},
+      {tag: 'Breastfeeding', details: ''},
+      {tag: 'CYP2D6 ultra-rapid metabolizers', details: 'Will convert codeine to active metabolite rapidly. Increased risk of overdose.'}
+    ],
+    doseRange: '15mg',
+    tags: ['Sedating', 'Respiratory depression', 'CYP2D6-activated']
+  },
+  codeineAcetaminophenCombos: {
+    chemicalName: 'Codeine/acetaminophen',
+    tradeNames: ['Tylenol-3', 'Tylenol-2', 'Tylenol-1', 'Empracet', 'Teva-emtec', 'Tylenol with codeine', 'Acetaminophen with codeine', 'Ratio-lenoltec no.4', 'Ratio-lenoltec no.3', 'Ratio-lenoltec no.2', 'Atasol-15', 'Tylenol with codeine no.2', 'Tylenol with codeine no.3', 'Tylenol with codeine no.4'],
+    strengths: ['15mg'],
+    class: 'Opioid',
+    indications: ['Pain'],
+    interactionTags: [
+      {tag: 'Acetaminophen', tagType: 'chemicalName', effect: 'Duplicate. Total acetaminophen dose must not exceed 4g per day.', severity: '2'},
+      {tag: 'Opioid', tagType: 'class', effect: 'Same class. Potential duplicate therapy. Overdose can lead to respiratory depression.', severity: '2'},
+      {tag: 'Sedating', tagType: 'tag', effect: 'Additive sedative effect.', severity: '2'},
+      {tag: 'Respiratory depression', tagType: 'tag', effect: 'Increased resipiratory depression.', severity: '2'},
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Intensifies effect of opioid. Contraindicated while on or 14 days after MAO-inhibitor therapy.', severity: ''},
+      {tag: 'CYP2D6-inhibitor', tagType: 'tag', effect: 'Reduced effectiveness of codeine.', severity: '1'},
+      {tag: 'CYP2D6-inducer', tagType: 'tag', effect: 'Increased risk of codeine overdose.', severity: '2'}
+    ],
+    crossAllergies: ['Opioid', 'Acetaminophen'],
+    contraindications: [
+      {tag: 'Gastrointestinal obstruction', details: 'Will worsen condition.'},
+      {tag: 'High alcohol intake', details: 'Sedation, respiratory depression.'},
+      {tag: 'Alcohol', details: 'Sedation, respiratory depression.'},
+      {tag: 'Pregnant', details: ''},
+      {tag: 'Breastfeeding', details: ''},
+      {tag: 'CYP2D6 ultra-rapid metabolizers', details: 'Will convert codeine to active metabolite rapidly. Increased risk of overdose.'}
+    ],
+    doseRange: '15mg',
+    tags: ['Sedating', 'Respiratory depression', 'CYP2D6-activated', 'Codeine', 'Acetaminophen', 'Opioid']
+  },
   /*dummy: {
     chemicalName: '',
     tradeNames: [],
