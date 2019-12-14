@@ -27,7 +27,8 @@ AddRelatedTerms('Atrial fibrillation', ["A-fib", "AF"]);
 AddRelatedTerms('Ventricular tachycardia', ["VT"]); 
 AddRelatedTerms('Diabetes', ['Type 1 diabetes', 'Type 2 diabetes', 'Type one diabetes', 'Type two diabetes', 'Diabetes Mellitus', 'High blood sugar']);
 AddRelatedTerms('Diabetic neuropathy', ['Diabetic foot', 'Diabetic nerve pain']);
-AddRelatedTerms('Active liver disease', ['Liver disease', 'Bad liver', 'Cirrhosis', 'Liver cirrhosis', 'Hepatic insufficiency', 'Alcoholic liver', 'Hepatitis', 'Chronic liver disease', 'Hepatic impairment']);
+AddRelatedTerms('Active liver disease', ['Liver disease', 'Bad liver', 'Cirrhosis', 'Liver cirrhosis', 'Alcoholic liver', 'Hepatitis', 'Chronic liver disease']);
+AddRelatedTerms('Hepatic insufficiency', ['Hepatic impairment', 'Liver impairment'])
 AddRelatedTerms('Poor renal function', ['Renal dysfunction', 'renal insufficiency', 'renal impairment', 'Poor renal clearance', 'Kidney problems', 'Bad kidneys']);
 AddRelatedTerms('Renal failure', ['Kidney failure'])
 AddRelatedTerms('Active bleeding', ['Bleeding', 'Internal bleeding', 'Hemorrhaging', 'Hemorrhage', 'Haemorrhage', 'Haemorrhaging']);
