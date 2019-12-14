@@ -1457,7 +1457,7 @@ const Compendium = {
   },
   antacids: {
     chemicalName: 'Antacid',
-    tradeNames: ['Tums', 'Alka-seltzer', 'Maalox', 'Mylanta', 'Rolaids', 'Antacid', 'Milk of magnesia', 'Gaviscon', 'Gelusil', 'Pepto-bismol', 'Sucralfate'],
+    tradeNames: ['Tums', 'Alka-seltzer', 'Maalox', 'Mylanta', 'Rolaids', 'Antacid', 'Milk of magnesia', 'Gaviscon', 'Gelusil', 'Sucralfate'],
     strengths: ['500'],
     class: 'Antacid',
     indications: ['Heartburn'],
@@ -1469,6 +1469,27 @@ const Compendium = {
       {tag: '', details: ''}
     ],
     doseRange: '',
+    tags: ['Cation']
+  },
+  peptobismol: {
+    chemicalName: 'Bismuth-subsalicylate',
+    tradeNames: ['Bismuth-subsalicylate', 'Pepto-bismol'],
+    strengths: ['1tab'],
+    class: 'Bismuth-subsalicylate',
+    indications: ['Heartburn'],
+    interactionTags: [
+      {tag: '', tagType: '', effect: '', severity: ''},
+      {tag: 'Cation-chelation', tagType: 'tag', effect: 'Binds to drug, reducing absorption. Space them out.', severity: '2'}
+    ],
+    crossAllergies: ['Bisthmuth-subsalicylate', 'Acetylsalicylic acid'],
+    contraindications: [
+      {tag: 'Renal failure', details: 'Avoid use.'},
+      {tag: 'Hepatic insufficiency', details: 'Avoid use.'},
+      {tag: 'Gastrointestinal ulcer', details: 'Avoid use.'},
+      {tag: 'age<13', details: "Risk of Reye's Syndrome, especially if have chicken-pox or flu-like symptoms."},
+      {tag: 'Pregnant', details: 'Avoid use.'}
+    ],
+    doseRange: '1tab',
     tags: ['Cation']
   }
   /*dummy: {
