@@ -25,6 +25,10 @@ AddRelatedTerms('Hyperlipidemia', ["Hypercholesterolemia", "Lipid disorder", "Hi
 AddRelatedTerms('Familial hypercholesterolemia', []);
 AddRelatedTerms('Atrial fibrillation', ["A-fib", "AF"]);
 AddRelatedTerms('Ventricular tachycardia', ["VT"]); 
+AddRelatedTerms('Long QT syndrome', ["Torsade de pointes"]);
+AddRelatedTerms('Hypokalemia', ["Hypokalaemia", "Low potassium", "Low K"]);
+AddRelatedTerms('Hypomagnesemia', ["Low magnesium", "Low Mg"]);
+AddRelatedTerms('Bradycardia', ["Slow heart rate"]);
 AddRelatedTerms('Diabetes', ['Type 1 diabetes', 'Type 2 diabetes', 'Type one diabetes', 'Type two diabetes', 'Diabetes Mellitus', 'High blood sugar']);
 AddRelatedTerms('Diabetic neuropathy', ['Diabetic foot', 'Diabetic nerve pain']);
 AddRelatedTerms('Active liver disease', ['Liver disease', 'Bad liver', 'Cirrhosis', 'Liver cirrhosis', 'Alcoholic liver', 'Hepatitis', 'Chronic liver disease']);
@@ -35,6 +39,9 @@ AddRelatedTerms('Active bleeding', ['Bleeding', 'Internal bleeding', 'Hemorrhagi
 AddRelatedTerms('Gastrointestinal ulcer', ['Peptic ulcer disease', 'PUD', 'Stomach ulcer']);
 AddRelatedTerms('G6PD', ['G6PD deficiency', 'glucose-6-phosphate dehydrogenase deficiency']);
 AddRelatedTerms('Enlarged prostate', ['Prostatitis', 'Prostate issues', 'Prostatic hypertrophy']);
+AddRelatedTerms('Sex', []);
+AddRelatedTerms('Weight', []);
+AddRelatedTerms('Crcl', []);
       
 module.exports = {
   Conditions 
