@@ -1591,6 +1591,34 @@ const Compendium = {
     doseRange: '15mg',
     tags: ['Sedating', 'Respiratory depression', 'CYP2D6-activated', 'Codeine', 'Acetaminophen', 'Opioid']
   },
+  morphine: {
+    chemicalName: 'Morphine',
+    tradeNames: ['Morphine', 'Statex', 'Ms contin', 'M-eslon', 'Doloral', 'Kadian', 'Morphine SR', 'MS-IR'],
+    strengths: ['15mg'],
+    class: 'Opioid',
+    indications: ['Pain'],
+    interactionTags: [
+      {tag: 'Opioid', tagType: 'class', effect: 'Same class. Potential duplicate therapy. Overdose can lead to respiratory depression.', severity: '2'},
+      {tag: 'Benzodiazepine', tagType: 'class', effect: 'Combination increases risk of profound sedation, respiratory depression, coma and death.', severity: '2'},
+      {tag: 'Sedating', tagType: 'tag', effect: 'Additive sedative effect.', severity: '2'},
+      {tag: 'Respiratory depression', tagType: 'tag', effect: 'Increased resipiratory depression.', severity: '2'},
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Intensifies effect of opioid. Contraindicated while on or 14 days after MAO-inhibitor therapy.', severity: ''},
+      {tag: 'Serotonin-syndrome', tagType: 'tag', effect: 'Increases risk of serotonin syndrome.', severity: '2'}
+    ],
+    crossAllergies: ['Opioid'],
+    contraindications: [
+      {tag: 'Gastrointestinal obstruction', details: 'Will worsen condition.'},
+      {tag: 'High alcohol intake', details: 'Sedation, respiratory depression.'},
+      {tag: 'Alcohol', details: 'Sedation, respiratory depression.'},
+      {tag: 'Pregnant', details: 'Prolonged use during pregnancy could lead to neonatal opioid withdrawal syndrome.'},
+      {tag: 'Breastfeeding', details: 'Can get into breastmilk.'},
+      {tag: 'CYP2D6 ultra-rapid metabolizers', details: 'Will convert codeine to active metabolite rapidly. Increased risk of overdose.'},
+      {tag: 'Atrial fibrillation', details: ''},
+      {tag: 'Ventricular tachycardia', details: ''}
+    ],
+    doseRange: '15mg',
+    tags: ['Sedating', 'Respiratory depression', 'Serotonin-syndrome']
+  }
   /*dummy: {
     chemicalName: '',
     tradeNames: [],
