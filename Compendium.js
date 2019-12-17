@@ -1546,8 +1546,6 @@ const Compendium = {
     indications: ['Pain'],
     interactionTags: [
       {tag: 'Opioid', tagType: 'class', effect: 'Same class. Potential duplicate therapy. Overdose can lead to respiratory depression.', severity: '2'},
-      {tag: 'Sedating', tagType: 'tag', effect: 'Additive sedative effect.', severity: '2'},
-      {tag: 'Respiratory depression', tagType: 'tag', effect: 'Increased resipiratory depression.', severity: '2'},
       {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Intensifies effect of opioid. Contraindicated while on or 14 days after MAO-inhibitor therapy.', severity: ''},
       {tag: 'CYP2D6-inhibitor', tagType: 'tag', effect: 'Reduced effectiveness of codeine.', severity: '1'},
       {tag: 'CYP2D6-inducer', tagType: 'tag', effect: 'Increased risk of codeine overdose.', severity: '2'}
@@ -1573,8 +1571,6 @@ const Compendium = {
     interactionTags: [
       {tag: 'Acetaminophen', tagType: 'chemicalName', effect: 'Duplicate. Total acetaminophen dose must not exceed 4g per day.', severity: '2'},
       {tag: 'Opioid', tagType: 'class', effect: 'Same class. Potential duplicate therapy. Overdose can lead to respiratory depression.', severity: '2'},
-      {tag: 'Sedating', tagType: 'tag', effect: 'Additive sedative effect.', severity: '2'},
-      {tag: 'Respiratory depression', tagType: 'tag', effect: 'Increased resipiratory depression.', severity: '2'},
       {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Intensifies effect of opioid. Contraindicated while on or 14 days after MAO-inhibitor therapy.', severity: ''},
       {tag: 'CYP2D6-inhibitor', tagType: 'tag', effect: 'Reduced effectiveness of codeine.', severity: '1'},
       {tag: 'CYP2D6-inducer', tagType: 'tag', effect: 'Increased risk of codeine overdose.', severity: '2'}
@@ -1600,8 +1596,6 @@ const Compendium = {
     interactionTags: [
       {tag: 'Opioid', tagType: 'class', effect: 'Same class. Potential duplicate therapy. Overdose can lead to respiratory depression.', severity: '2'},
       {tag: 'Benzodiazepine', tagType: 'class', effect: 'Combination increases risk of profound sedation, respiratory depression, coma and death.', severity: '2'},
-      {tag: 'Sedating', tagType: 'tag', effect: 'Additive sedative effect.', severity: '2'},
-      {tag: 'Respiratory depression', tagType: 'tag', effect: 'Increased resipiratory depression.', severity: '2'},
       {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Intensifies effect of opioid. Contraindicated while on or 14 days after MAO-inhibitor therapy.', severity: ''},
       {tag: 'Serotonin-syndrome', tagType: 'tag', effect: 'Increases risk of serotonin syndrome.', severity: '2'}
     ],
@@ -1618,6 +1612,59 @@ const Compendium = {
     ],
     doseRange: '15mg',
     tags: ['Sedating', 'Respiratory depression', 'Serotonin-syndrome']
+  },
+  oxycodone: {
+    chemicalName: 'Oxycodone',
+    tradeNames: ['Oxycodone', 'Oxy IR', 'Supeudol', 'Oxyneo', 'Oxycontin'],
+    strengths: ['15mg'],
+    class: 'Opioid',
+    indications: ['Pain'],
+    interactionTags: [
+      {tag: 'Opioid', tagType: 'class', effect: 'Same class. Potential duplicate therapy. Overdose can lead to respiratory depression.', severity: '2'},
+      {tag: 'Benzodiazepine', tagType: 'class', effect: 'Combination increases risk of profound sedation, respiratory depression, coma and death.', severity: '2'},
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Intensifies effect of opioid. Contraindicated while on or 14 days after MAO-inhibitor therapy.', severity: ''},
+      {tag: 'Serotonin-syndrome', tagType: 'tag', effect: 'Increases risk of serotonin syndrome.', severity: '2'},
+      {tag: 'CYP3A4-inhibitor', tagType: 'tag', effect: 'Decreased clearance of oxycodone leading to risk of overdose.', severity: '2'},
+      {tag: 'CYP3A4-inducer', tagType: 'tag', effect: 'Increased clearance of oxycodone leading to reduced effectiveness.', severity: '1'}
+    ],
+    crossAllergies: ['Opioid'],
+    contraindications: [
+      {tag: 'Gastrointestinal obstruction', details: 'Will worsen condition.'},
+      {tag: 'High alcohol intake', details: 'Sedation, respiratory depression.'},
+      {tag: 'Alcohol', details: 'Sedation, respiratory depression.'},
+      {tag: 'Pregnant', details: 'Prolonged use during pregnancy could lead to neonatal opioid withdrawal syndrome.'},
+      {tag: 'Breastfeeding', details: 'Can get into breastmilk.'},
+      {tag: 'Epilepsy', details: ''}
+    ],
+    doseRange: '15mg',
+    tags: ['Sedating', 'Respiratory depression', 'Serotonin-syndrome', 'CYP3A4-substrate']
+  },
+  oxycodoneAcetaminophen: {
+    chemicalName: 'Oxycodone/Acetaminophen',
+    tradeNames: ['Ratio-oxycocet', 'Percocet', 'Apo-oxycodone/acet', 'Endocet', 'Oxycodone/acetaminophen'],
+    strengths: ['15mg'],
+    class: 'Opioid',
+    indications: ['Pain'],
+    interactionTags: [
+      {tag: 'Opioid', tagType: 'class', effect: 'Same class. Potential duplicate therapy. Overdose can lead to respiratory depression.', severity: '2'},
+      {tag: 'Benzodiazepine', tagType: 'class', effect: 'Combination increases risk of profound sedation, respiratory depression, coma and death.', severity: '2'},
+      {tag: 'MAO-inhibitor', tagType: 'class', effect: 'Intensifies effect of opioid. Contraindicated while on or 14 days after MAO-inhibitor therapy.', severity: ''},
+      {tag: 'Serotonin-syndrome', tagType: 'tag', effect: 'Increases risk of serotonin syndrome.', severity: '2'},
+      {tag: 'CYP3A4-inhibitor', tagType: 'tag', effect: 'Decreased clearance of oxycodone leading to risk of overdose.', severity: '2'},
+      {tag: 'CYP3A4-inducer', tagType: 'tag', effect: 'Increased clearance of oxycodone leading to reduced effectiveness.', severity: '1'},
+      {tag: 'Acetaminophen', tagType: 'chemicalName', effect: 'Duplicate.', severity: '3'}
+    ],
+    crossAllergies: ['Opioid', 'Acetaminophen'],
+    contraindications: [
+      {tag: 'Gastrointestinal obstruction', details: 'Will worsen condition.'},
+      {tag: 'High alcohol intake', details: 'Sedation, respiratory depression, liver toxicity.'},
+      {tag: 'Alcohol', details: 'Sedation, respiratory depression.'},
+      {tag: 'Pregnant', details: 'Prolonged use during pregnancy could lead to neonatal opioid withdrawal syndrome.'},
+      {tag: 'Breastfeeding', details: 'Can get into breastmilk.'},
+      {tag: 'Epilepsy', details: ''}
+    ],
+    doseRange: '15mg',
+    tags: ['Sedating', 'Respiratory depression', 'Serotonin-syndrome', 'CYP3A4-substrate']
   }
   /*dummy: {
     chemicalName: '',
